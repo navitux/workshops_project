@@ -49,7 +49,7 @@ class Course(models.Model):
     quota = models.IntegerField(help_text="The quota field defines the maximum number of students allowed in this course, but if this value is not set or is zero, the course will not have a mandatory limit of students",default=0)
     course_type = models.ForeignKey(CourseType, on_delete = models.SET_DEFAULT, default = general, help_text="This field indicates the classification of this course, if this field is empty, the default classification would be 'general' classification")
 
-class UserProfile:
+class UserProfile(models.Model):
     '''
     This model represents each user in 'workshops' projects and its apps
     and is implemented by django.contrib.auth.models.* package default in 

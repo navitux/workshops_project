@@ -1,11 +1,11 @@
-#ESPAÑOL:
+# ESPAÑOL:
 ---
-##Vista General
+## Vista General
 
 Workshops es un proyecto implementado en Python (versión 3.8.x) usando Django (versión 2.2.x) (basado en una implementación anterior en PHP) que consiste en un proyecto compuesto de aplicaciones que respectivamente: Permitan la gestión de listas de estudiantes en cursos que a su vez están clasificados por departamentos, Permita iniciar sesión como estudiante, profesor o administrador, y una que muestre un panel de control o pagina de inicio según el rol que tenga cada usuario. Otras funcionalidades pueden ser añadidas en el futuro (por eso se ha implementado en Django, garantizando una estructura coherente del proyecto y sus aplicaciones).
 
 
-###Sus funciones básicas son:
+### Sus funciones básicas son:
 
 - Realizar operaciones de creación/lectura/actualización/eliminación (CRUD) en los departamentos, cursos y alumnos (individualmente o en lotes).
 
@@ -13,7 +13,7 @@ Workshops es un proyecto implementado en Python (versión 3.8.x) usando Django (
 
 - Crear un tutorial interactivo para cada aplicación.
 
-###Lista de aplicaciones usadas
+### Lista de aplicaciones usadas
 
 - UsersData (aplicación para crear los modelos utilizados en todo el proyecto)      ESTADO: HECHO
 - AdminDashboard (el panel principal del administrador)         ESTADO: POR HACER
@@ -22,7 +22,7 @@ Workshops es un proyecto implementado en Python (versión 3.8.x) usando Django (
 - UserBrowser (aplicación utilizada para realizar búsquedas de cualquier
 para buscar a otros usuarios) ESTADO: POR HACER
 
-###Lista de modelos esenciales utilizados
+### Lista de modelos esenciales utilizados
 
 - CourseType        ESTADO: HECHO
 - Course            ESTADO: HECHO
@@ -31,13 +31,13 @@ para buscar a otros usuarios) ESTADO: POR HACER
 
 
 
-#ENGLISH:
+# ENGLISH:
 ---
-##General view
+## General view
 
 Workshops is a project implemented in Python (version 3.8.x) using Django (version 2.2.x) (based on a previous implementation in PHP) that consists of a project composed of applications that respectively: Allow the management of lists of students in courses that are classified by departments, Allow logging in as a student, teacher or administrator, and one that shows a control panel or home page according to the role that each user has. Other functionalities can be added in the future (that's why it has been implemented in Django, ensuring a coherent structure of the project and its applications).
 
-###The basic functions are:
+### The basic functions are:
 
 - Perform creation/reading/updating/deleting (CRUD) operations on departments, courses and students (individually or in batches).
 
@@ -45,7 +45,7 @@ Workshops is a project implemented in Python (version 3.8.x) using Django (versi
 
 - Create an interactive tutorial for each application.
 
-###List of apps used
+### List of apps used
 
 - UsersData (app to create the models used in whole the project).  STATE: DONE
 - AdminDashboard (the administrator's main panel)                  STATE: TODO
@@ -54,7 +54,7 @@ Workshops is a project implemented in Python (version 3.8.x) using Django (versi
 - UserBrowser (application used to perform searches for any
 user to search for other users)                                    STATE: TODO
 
-###List of esential models used
+### List of esential models used
 
 - CourseType  STATE: DONE
 - Course      STATE: DONE

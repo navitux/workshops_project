@@ -5,9 +5,9 @@ Workshops es un proyecto implementado en Python (versión 3.8.x) usando Django (
 
 ### Sus funciones básicas son:
 
-- Realizar operaciones de creación/lectura/actualización/eliminación (CRUD) en los departamentos, cursos y alumnos (individualmente o en lotes).
+- Realizar operaciones de creación/lectura/actualización/eliminación (CRUD) en estudiantes y cursos clasificados o no clasificados por diferentes filtros (individualmente o por lotes).
 
-- Poder subir y descargar listas de alumnos por lotes en archivos con los siguientes formatos: Excel (.xslx, .xls), LibreOfficeCalc (.ods), archivos de texto plano separado por comas (.csv) o bien en de base de datos archivos sqlite.
+- Poder importar y exportar listas de alumnos por lotes en archivos con los siguientes formatos: Excel (.xslx, .xls), LibreOfficeCalc (.ods), archivos de texto plano separado por comas (.csv) o bien en de base de datos archivos sqlite.
 
 - Crear un tutorial interactivo para cada aplicación.
 

@@ -1,1 +1,1 @@
-Add a homepage for project and link it with Login app (assigned to: navitux)
+Add a homepage for project with a link to Login/Register app (assigned to: navitux)

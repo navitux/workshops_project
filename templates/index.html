@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Workshops Portal -->
+{% load static %}
+</body>
+<html lang='en'>
+<head>
+  <title>Workshops</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Main page of Workshops">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <noscript>You need enable javascript to this site works properly</noscript>
+  <!-- The CSS library imported here is chota, which documentation is in
+       this link: https://jenil.github.io/chota/ -->
+  <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+  <style>
+  :root {
+  --bg-color: #393D46;
+  --bg-secondary-color: #282C34;
+  --color-primary: #14854F;
+  --color-lightGrey: #d2d6dd;
+  --color-grey: #747681;
+  --color-darkGrey: #3f4144;
+  --color-error: #d43939;
+  --color-success: #28bd14;
+  --grid-maxWidth: 120rem;
+  --grid-gutter: 2rem;
+  --font-size: 1.6rem;
+  --font-color: #FFFEF8;
+  --font-family-sans: sans-serif;
+  --font-family-mono: monaco, "Consolas", "Lucida Console", monospace;
+}
+  </style>
+</head>
+<body>
+  <nav id="navbar" class="row" style=" padding:1%; margin-bottom:1%; height:auto; background-color:#282C34;">
+    <img class="col-3" src="{% static 'logo2.svg'  %}" style="position:relative; height:10%; float:left;" />
+    <div id="sub-navbar" style="float:right; border:solid white 1px;">
+      <a href="https://github.com/navitux/workshops_project" target="_blank" style="text-decoration:none;"><button>Github</button></a>
+      <a href=""><button id="login_button">Login</button></a>
+      <a href=""><button id="signup_button">Signup</button></a>
+    </div>
+  </nav>
+  <h1>Welcome to Workshops, the e-learning tool</h1>
+  <img src="{% static 'pet.svg'  %}"/>
+  <div/>
+  <div id="about">
+    <h2>About</h2>
+    <p align="justify">This is Workshops, is a project created to manage student lists and
+      educational content in an easy and adaptable way from low income public
+      schools (with low resource computers) to large courses with many students
+      in an organization, company or a college compatible with each other,
+      built under a free software license in Django.
+    </p>
+    <hr>
+  </div>
+
+  <section id="features">
+    <h2>Features</h2>
+    <ul>
+      <li>Free and Open Source</li>
+      <li>Easy to use</li>
+      <li>Easy instalation</li>
+    </ul>
+    <hr>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+      <a href="mailto:navitux@disroot.org" style="none">
+      navitux@disroot.org
+      </a>
+      <br>
+      <a href="https://github.com/navitux/" target="_blank">
+      github.com/navitux
+      </a>
+  </section>
+
+  <div id="modal_container" style="display:none;">
+
+  </div>
+</body>
+</html>

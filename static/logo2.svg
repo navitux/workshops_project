@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="61.698948mm"
+   height="17.422655mm"
+   viewBox="0 0 61.698948 17.422655"
+   version="1.1"
+   id="svg1570"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="logo2.svg">
+  <defs
+     id="defs1564" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.6709898"
+     inkscape:cx="215.60415"
+     inkscape:cy="64.86214"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g41082"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="701"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata1567">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(5.0730258,-22.10834)">
+    <g
+       id="logo"
+       style="opacity:1"
+       transform="translate(44.426321,-73.176382)">
+      <path
+         id="path32604-1-6-1"
+         style="fill:#a0855b;fill-opacity:1;stroke:#000000;stroke-width:0.480282;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 24.203142,52.737915 c -1.15525,0.0168 -2.137751,0.78445 -2.349211,1.83554 -1.710984,-0.76235 -3.67722,-1.16575 -5.682341,-1.16582 -2.134877,1.3e-4 -4.222697,0.45744 -6.004284,1.31517 -0.1839522,-1.09428 -1.2020493,-1.90139 -2.3988203,-1.90169 -1.3414481,-2.3e-4 -2.4289851,1.00608 -2.4287925,2.2474 2.03e-4,0.9335 0.6240862,1.76967 1.5673462,2.10065 -1.0683629,1.25718 -1.1954097,2.83603 -1.1955026,4.31501 2.12e-5,4.38923 4.4406982,7.81816 10.4600532,7.8181 6.019154,-1.5e-4 10.486719,-3.41781 10.48674,-7.80689 -3.5e-5,-1.54376 -0.204846,-3.19453 -1.36275,-4.48693 0.839645,-0.37468 1.373399,-1.16106 1.373561,-2.02365 -1.17e-4,-1.24093 -1.087247,-2.24686 -2.428275,-2.24689 -0.01257,-9e-5 -0.02516,-9e-5 -0.03772,0 z"
+         sodipodi:nodetypes="cccccccccccccc"
+         transform="translate(-54.598899,43.164961)" />
+      <g
+         id="g41082">
+        <path
+           style="fill:none;stroke:#8f384d;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -37.62682,95.284722 15.711372,7.896778"
+           id="path40445" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;opacity:0.998;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.13229167;stroke-miterlimit:4;stroke-dasharray:none"
+           x="-45.011192"
+           y="107.81564"
+           id="text40863"><tspan
+             sodipodi:role="line"
+             id="tspan40861"
+             x="-45.011192"
+             y="107.81564"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.13229167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">Workshops</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="-5.5993061"
+           y="124.39103"
+           id="text2431"><tspan
+             sodipodi:role="line"
+             id="tspan2429"
+             x="-5.5993061"
+             y="124.39103"
+             style="stroke-width:0.264583"></tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

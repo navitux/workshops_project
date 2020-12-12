@@ -1,1 +1,1 @@
-Add a django app called 'Portal' with project's first page with information as is in the README.md file and a hiddeable login pane (assigned to: navitux)
+Add a homepage for project and link it with Login app (assigned to: navitux)

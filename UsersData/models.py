@@ -1,7 +1,7 @@
 from django.db import models
-
+from taggit.managers import TaggableManager
 # Create your models here.
-class CourseType (models.Models):
+class CourseType (models.Model):
     '''
     This model represents each classification ('classification' and 'CourseType'
     can be considered as synonims in this context from here onwards)  for all
@@ -35,7 +35,7 @@ class Course(models.Model):
     the project as 'CourseType'and it is represented here as the 'course_type'
     field and it have a one-to-many relationship with CourseType
     (one CourseType to many Courses) and the default CourseType of each course
-    is 'general' defined in this file before (if other CourseType is assigned and
+    is 'general' defined in this app (if other CourseType is assigned and
     later this is deleted, the CourseType of the 'orphan' course will be 'general'
     again). And contents, learning materials, links of contents, teachers's comments,
     information of relative contents (nor here but all these can be added as the
@@ -46,7 +46,7 @@ class Course(models.Model):
     overview = models.CharField(verbose_name="Course's Overview", help_text="This field is to give a brief overwiew about this course and its details in a maximum of 200 alphanumerical characters, and this is not mandatory",max_length=200)
     tags = TaggableManager()
     quota = models.IntegerField(help_text="The quota field defines the maximum number of students allowed in this course, but if this value is not set or is zero, the course will not have a mandatory limit of students",default=0)
-    course_type = models.ForeignKey(CourseType, on_delete = models.SET_DEFAULT, default = general, help_text="This field indicates the classification of this course, if this field is empty, the default classification would be 'general' classification")
+    course_type = models.ForeignKey(CourseType,  help_text="This field indicates the classification of this course")
 
 class UserProfile(models.Model):
     '''

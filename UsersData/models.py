@@ -1,5 +1,6 @@
 from django.db import models
 from taggit.managers import TaggableManager
+from django.contrib.auth.models import User
 # Create your models here.
 class CourseType (models.Model):
     '''
@@ -40,7 +41,7 @@ class Course(models.Model):
     overview = models.CharField(verbose_name="Course's Overview", help_text="This field is to give a brief overwiew about this course and its details in a maximum of 200 alphanumerical characters, and this is not mandatory",max_length=200)
     tags = TaggableManager()
     quota = models.IntegerField(help_text="The quota field defines the maximum number of students allowed in this course, but if this value is not set or is zero, the course will not have a mandatory limit of students",default=0)
-    course_type = models.ForeignKey(CourseType, on_delete=DO_NOTHING ,help_text="This field indicates the classification of this course")
+    course_type = models.ForeignKey(CourseType, blank=True, null=True, on_delete=models.SET_NULL, help_text="This field indicates the classification of this course")
 
 class UserProfile(models.Model):
     '''

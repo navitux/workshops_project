@@ -11,11 +11,11 @@
    height="17.422655mm"
    viewBox="0 0 61.698948 17.422655"
    version="1.1"
-   id="svg1570"
+   id="svg1514"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="logo2.svg">
+   sodipodi:docname="logo.svg">
   <defs
-     id="defs1564" />
+     id="defs1508" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -23,11 +23,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.6709898"
-     inkscape:cx="215.60415"
-     inkscape:cy="64.86214"
+     inkscape:zoom="1.888675"
+     inkscape:cx="224.3554"
+     inkscape:cy="92.919916"
      inkscape:document-units="mm"
-     inkscape:current-layer="g41082"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1366"
@@ -36,7 +36,7 @@
      inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
-     id="metadata1567">
+     id="metadata1511">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -51,11 +51,11 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(5.0730258,-22.10834)">
+     transform="translate(-5.1564582,-7.3130976)">
     <g
        id="logo"
        style="opacity:1"
-       transform="translate(44.426321,-73.176382)">
+       transform="translate(54.655805,-87.971624)">
       <path
          id="path32604-1-6-1"
          style="fill:#a0855b;fill-opacity:1;stroke:#000000;stroke-width:0.480282;stroke-miterlimit:4;stroke-dasharray:none"
@@ -70,7 +70,7 @@
            id="path40445" />
         <text
            xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;opacity:0.998;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.13229167;stroke-miterlimit:4;stroke-dasharray:none"
+           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;opacity:0.998;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
            x="-45.011192"
            y="107.81564"
            id="text40863"><tspan
@@ -78,18 +78,7 @@
              id="tspan40861"
              x="-45.011192"
              y="107.81564"
-             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.13229167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">Workshops</tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-           x="-5.5993061"
-           y="124.39103"
-           id="text2431"><tspan
-             sodipodi:role="line"
-             id="tspan2429"
-             x="-5.5993061"
-             y="124.39103"
-             style="stroke-width:0.264583"></tspan></text>
+             style="stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none">Workshops</tspan></text>
       </g>
     </g>
   </g>

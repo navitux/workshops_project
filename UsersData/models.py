@@ -15,14 +15,6 @@ class CourseType (models.Model):
     overview = models.CharField(verbose_name="Classification's Overview", help_text="This field is to give a brief overview about this classification in a maximum of 200 alphanumerical characters, and this is not mandatory",max_length=200)
 
 
-# 'general' is the first instance of CourseType model and this is the default
-# CourseType for all Courses  MUST NOT BE DELETED for major consistency of
-# classification and management of the courses. For further consistency it must
-# be declared as follow inside this app.
-# general = CourseType(name="general",overview="This is the default Classification for all courses without a specific one")
-# general.save()
-
-
 class Course(models.Model):
     '''
     This model represents each course in the project and its basic data

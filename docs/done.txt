@@ -1,0 +1,1 @@
+x 2020-12-13 Add a homepage for project with a link to Login/Register app (assigned to: navitux)

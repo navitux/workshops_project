@@ -7,8 +7,7 @@ class CourseType (models.Model):
     can be considered as synonims in this context from here onwards)  for all
     courses registered and it have a one-to-many relation with the model
     'Course', this model have only 3 properties, the default CourseType
-    of all courses at first will be the Type called 'general'with id 1, it
-    must be declared in future to ensure consistency in the app.
+    of all courses.
     '''
     id = models.AutoField(primary_key=True)
     name = models.CharField(verbose_name="Classification's Name", help_text="This name field is to identify easily each course by the users (in addition to its id number), its length is 30 alphanumerical characters as maximum,and this is mandatory",max_length=30,blank=False,null=False)
@@ -34,19 +33,14 @@ class Course(models.Model):
     that is the default value), and its relative 'classification' refered here in
     the project as 'CourseType'and it is represented here as the 'course_type'
     field and it have a one-to-many relationship with CourseType
-    (one CourseType to many Courses) and the default CourseType of each course
-    is 'general' defined in this app (if other CourseType is assigned and
-    later this is deleted, the CourseType of the 'orphan' course will be 'general'
-    again). And contents, learning materials, links of contents, teachers's comments,
-    information of relative contents (nor here but all these can be added as the
-    project continues).
+    (one CourseType to many Courses) and at first it can be empty.
     '''
     id = models.AutoField(primary_key=True)
     name = models.CharField(verbose_name="Course's Name", help_text="This name field is to identify easily each course by the users (in addition to its id number), its length is 30 alphanumerical characters as maximum,and this is mandatory",max_length=30,blank=False,null=False)
     overview = models.CharField(verbose_name="Course's Overview", help_text="This field is to give a brief overwiew about this course and its details in a maximum of 200 alphanumerical characters, and this is not mandatory",max_length=200)
     tags = TaggableManager()
     quota = models.IntegerField(help_text="The quota field defines the maximum number of students allowed in this course, but if this value is not set or is zero, the course will not have a mandatory limit of students",default=0)
-    course_type = models.ForeignKey(CourseType,  help_text="This field indicates the classification of this course")
+    course_type = models.ForeignKey(CourseType, on_delete=DO_NOTHING ,help_text="This field indicates the classification of this course")
 
 class UserProfile(models.Model):
     '''

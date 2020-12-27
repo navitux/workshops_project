@@ -3,6 +3,6 @@
 *.pyc
 *.log
 __pycache__/
-workshops_db.sqlite3
+*.sqlite3
 media
 migrations

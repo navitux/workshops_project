@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if error %}
+{{ error }}
+<br />
+<br />
+{% endif %}
+<section class="fl w-50 dib pa2">
+  <b>Login:</b>
+  <form id="login" action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <label class="w-30" for="username">Username:</label>
+    <br/>
+    <input class="w-30" type="text" name="username" required/>
+    <br/>
+    <label class="w-30" for="password">Password:</label>
+    <br/>
+    <input class="w-30" type="password" name="password" required />
+    <br/>
+    <button type="submit">Login</button>
+  </form>
+</section>
+
+<section class="fr w-50 dib pa2">
+  <b>Register an Account:</b>
+  <form id="signup" class="" action="{% url 'signup' %}" method="post">
+    {% csrf_token %}
+    <label for="username_r">Username:</label>
+    <br/>
+    <input type="text" name="username_r" required />
+    <br/>
+    <label for="firstname">First name(s):</label>
+    <br/>
+    <input type="text" name="firstname" required />
+    <br/>
+    <label for="lastname">Last name(s):</label>
+    <br/>
+    <input type="text" name="lastname" required />
+    <br/>
+    <label for="email">E-mail:</label>
+    <br/>
+    <input type="email" name="email"/>
+    <br/>
+    <label for="password1">Password:</label>
+    <br/>
+    <input type="password" name="password1" required/>
+    <br/>
+    <label for="password2">Confirm Password:</label>
+    <br/>
+    <input type="password" name="password2" required/>
+    <br/>
+    <button type="submit">Register</button>
+  </form>
+</section>
+{% endblock %}

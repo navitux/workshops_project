@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <noscript>You need enable javascript to this site works properly</noscript>
+  <link rel="icon" href="{% static 'icon.svg' %}">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+  <title>Workshops</title>
+</head>
+<body>
+
+  <nav class="pa1" style="background-color:#393D46;">
+    <!-- Home Button -->
+    <a class="link dim dib pa2" href="{%url 'index'%}" title="Home">
+      <img src="{% static 'icon.svg' %}" style="height:50px;"/>
+    </a>
+    <!-- ............... -->
+    {% if user.is_authenticated %}
+    <a class="fr no-underline near-white bg-animate bg-near-black
+      hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
+      href="javascript:{document.getElementById('logout').submit()}"
+      onclick=""><span class="f6 ml3 pr2 pa1">Logout</span></a>
+    <p class="fr near-white"> Hello {{ user.username }} </p>
+    <form id="logout" method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <input type="hidden" />
+    </form>
+    {% else %}
+    <!-- Register Button -->
+    <a class="fr no-underline near-white bg-animate bg-near-black
+      hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
+      href="{% url 'signupin' %}" title="Enter with your Username or Create an Account">
+      <span class="f6 ml3 pr2 pa1">Login/SignUp</span>
+    </a>
+    <!-- .............. -->
+    {% endif %}
+  </nav>
+  {% block content %}
+  {% endblock %}
+  <br/>
+  <br/>
+</body>
+</html>

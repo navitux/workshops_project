@@ -13,7 +13,8 @@ Workshops es un proyecto implementado en Python (versión 3.8.x) usando Django (
 
 ### Lista de aplicaciones usadas
 
-- Una página de portal (el portal de acceso y que será la página de inicio)      
+- Una página de portal (el portal de acceso y que será la página de inicio)
+- Una aplicación de registro y login.
 - UsersData (aplicación para crear los modelos utilizados en todo el proyecto)   
 - AdminDashboard (el panel principal del administrador)                          
 - Tablero de control (el panel principal del usuario normal y de los "maestros")

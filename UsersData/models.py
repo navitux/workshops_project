@@ -35,16 +35,8 @@ class Course(models.Model):
     quota = models.IntegerField(help_text="The quota field defines the maximum number of students allowed in this course, but if this value is not set or is zero, the course will not have a mandatory limit of students",default=0)
     course_type = models.ForeignKey(CourseType, blank=True, null=True, on_delete=models.SET_NULL, help_text="This field indicates the classification of this course")
 
-class UserProfile(models.Model):
-    '''
-    This model represents each user in 'workshops' projects and its apps
-    and is implemented by django.contrib.auth.models.* package default in
-    Django, it is documented in the link bellow:
-    https://docs.djangoproject.com/en/2.2/ref/contrib/auth/
-    and to create a superuser (an administrator) it can be implemented
-    with the automatic admin interface (in CLI or in a Web view)
-    provided by Django,  it is documented in the link bellow:
-    https://docs.djangoproject.com/en/2.2/ref/contrib/admin/
-    '''
-    id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    def __str__(self):
+        return self.name
+
+    def overview(self):
+        return self.overview[:100]

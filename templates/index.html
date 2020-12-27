@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<!-- Workshops Portal -->
-{% load static %}
-<html>
-<head>
-  <title>Workshops</title>
-  <meta charset="UTF-8">
-  <meta name="description" content="Main page of Workshops">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <noscript>You need enable javascript to this site works properly</noscript>
-  <link rel="icon" href="{% static 'icon.svg' %}">
-  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
-</head>
-<body>
-
+{% extends 'base.html' %}
+{% block content %}
+  {% load staticfiles %}
   <nav class="center ph3 ph5-ns ph0-l mw7">
-    <img class="w-50 center " src="{% static 'logo.svg' %}"/>
     <div class="tc pb3">
-      <a class="no-underline near-white bg-animate bg-near-black
-        hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
-        href="#"
-        target="_blank"
-        title="Login or SignUp">
-        <div class="h2" width="0"></div> <!-- This div is for give size consistency to this element as the next 'github' link -->
-        <span class="f6 ml3 pr2">Login/SignUp</span>
-      </a>
+      <img class="w-50" src="{% static 'logo.svg' %}"/>
+      <br/>
       <a class="no-underline near-white bg-animate bg-near-black
         hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
         href="https://github.com/navitux/workshops_project"
@@ -41,12 +22,12 @@
     </div>
   </nav>
 
-  <img style="position:fixed; left:0; z-index:-1; height:40%;" src="{% static 'pet.svg'  %}"/>
+  <img class="fl nested-img img" src="{% static 'pet.svg'  %}"/>
 
   <article class="center ph3 ph5-ns ph0-l mw6">
-  <h1 class="f3 f2-m f1-l">About</h1>
+  <b class="f4">About</b>
   <p class="measure lh-copy" align="justify">
-    This is Workshops, is a project created to manage student
+    This is Workshops (still in a beta phase), is a project created to manage student
     lists and educational content in an easy and adaptable way from low income
     public schools (with low resource computers) to large courses with many
     students in an organization, company or a college compatible with each
@@ -55,22 +36,18 @@
 </article>
 
 <article class="center ph3 ph5-ns ph0-l mw6">
-<h1 class="f3 f2-m f1-l">Features</h1>
-  <p>Free and Open Source</p>
-  <p>Easy to use</p>
-  <p>Easy instalation</p>
+<b class="f4">Features</b>
+  <ul>
+    <li>Free and Open Source</li>
+    <li>Easy to use</li>
+    <li>Easy instalation</li>
+  </ul>
 </article>
 
 <article class="center ph3 ph5-ns ph0-l mw6">
-<h1 class="f3 f2-m f1-l">Contact</h1>
-<a href="mailto:navitux@disroot.org" style="none">
-navitux@disroot.org
-</a>
+<b class="f4">Contact</b>
 <br/>
-<a href="https://github.com/navitux/" target="_blank">
-github.com/navitux
-</a>
+<a href="mailto:navitux@disroot.org" style="none">navitux@disroot.org</a>
+<br/>
 </article>
-<br/>
-</body>
-</html>
+{% endblock %}

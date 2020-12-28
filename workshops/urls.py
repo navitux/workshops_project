@@ -21,5 +21,6 @@ from SignUpIn import urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name='index'),
-    path('', include('SignUpIn.urls'))
+    path('', include('SignUpIn.urls')),
+    path('', include('UsersData.urls')),
 ]

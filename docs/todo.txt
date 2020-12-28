@@ -1,1 +1,1 @@
-Add a Login/Register app and link it with the homepage allowing to students and teachers see their personal dashboard and general info.
+Make an app to create courses

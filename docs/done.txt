@@ -1,1 +1,2 @@
 x 2020-12-13 Add a homepage for project with a link to Login/Register app (assigned to: navitux)
+x 2020-12-27 Add a Login/Register app and link it with the homepage allowing to students and teachers see their personal dashboard and general info.

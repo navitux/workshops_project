@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if error %}
+{{ error }}
+<br />
+<br />
+{% endif %}
+<section class="fr w-50 dib pa2">
+  <b>Create a New Course Classification:</b>
+  <form id="create_coursetype" action="{% url 'dashboard' %}" method="post">
+    {% csrf_token %}
+    <label class="w-30" for="coursetype">New Course Type Name:</label>
+    <br/>
+    <input class="w-30" type="text" name="coursetype" required/>
+    <br/>
+    <button type="submit">Create</button>
+  </form>
+</section>
+
+<section class="fl w-50 dib pa2">
+  <b>Create a New Course:</b>
+  <form id="create_course" action="{% url 'dashboard' %}" method="post">
+    {% csrf_token %}
+    <label class="w-30" for="coursetype">New Course Name:</label>
+    <br/>
+    <input class="w-30" type="text" name="coursetype" required/>
+    <br/>
+	<label class="w-30" for="overview">Course's Overview:</label>
+    <br/>
+	<input class="w-30" type="text" name="overview" required/>
+    <br/>
+	<label class="w-30" for="quota">Quota:</label>
+	<br/>
+    <input class="w-30" type="number" name="quota" default="0"/>
+	<br/>
+	<label class="w-30" for="tags">Tags:</label>
+	<br/>
+	<input class="w-30" type="text" name="tags"/>
+	<br/>
+    <button type="submit">Create</button>
+  </form>
+</section>
+
+{% endblock %}

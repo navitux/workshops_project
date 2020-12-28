@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if error %}
+{{ error }}
+<br />
+<br />
+{% endif %}
   {% load staticfiles %}
   <nav class="center ph3 ph5-ns ph0-l mw7">
     <div class="tc pb3">

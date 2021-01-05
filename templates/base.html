@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <noscript>You need enable javascript to this site works properly</noscript>
   <link rel="icon" href="{% static 'icon.svg' %}">
+  <!-- For general style (documentation: http://tachyons.io/docs/ )-->
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+  <!-- For style in tooltips boxes (documentation:https://atomiks.github.io/tippyjs/v6/getting-started/ ) -->
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
   <style>
 	*{
 	font-family:sans-serif;
@@ -15,7 +18,8 @@
   <title>Workshops</title>
 </head>
 <body>
-
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
   <nav class="pa1" style="background-color:#393D46;">
     <!-- Home Button -->
     <a class="link dim dib pa2" href="{%url 'index'%}" title="Go to home page">

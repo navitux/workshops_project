@@ -1,44 +1,93 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
 {% if error %}
 {{ error }}
 <br />
 <br />
 {% endif %}
-<section class="fr w-50 dib pa2">
+
+<section class="w-100">
+	<br/>
+
+</section>
+
+<section class="fl w-50 dib pa2">
   <b>Create a New Course Classification:</b>
   <form id="create_coursetype" action="{% url 'dashboard' %}" method="post">
     {% csrf_token %}
-    <label class="w-30" for="coursetype">New Course Type Name:</label>
+    <label class="w-30" for="class_course">New Classification Name:</label>
     <br/>
-    <input class="w-30" type="text" name="coursetype" required/>
+    <input class="w-30" type="text" name="coursetype" maxlength="120" required/>
+	<img
+	id="h-coursetype"
+	src="{% static 'awesome-info.svg' %}"
+	class="img dib v-mid"
+	style="height:30px;"
+	title="Help of this field" />
+    <br/>
+	<label class="w-30" for="class_overview">Classification's Overview:</label>
+    <br/>
+	<input class="w-30" type="text" name="class_overview" maxlength="200" required/>
+	<img
+	src="{% static 'awesome-info.svg' %}"
+	class="img dib v-mid"
+	style="height:30px;"
+	title="Help of this field" />
     <br/>
     <button type="submit">Create</button>
   </form>
 </section>
 
-<section class="fl w-50 dib pa2">
+<section class="fr w-50 dib pa2">
   <b>Create a New Course:</b>
   <form id="create_course" action="{% url 'dashboard' %}" method="post">
     {% csrf_token %}
-    <label class="w-30" for="coursetype">New Course Name:</label>
+    <label class="w-30" for="course">New Course Name:</label>
     <br/>
-    <input class="w-30" type="text" name="coursetype" required/>
+    <input class="w-30" type="text" name="course" maxlength="120" required/>
+		<img
+		src="{% static 'awesome-info.svg' %}"
+		class="img dib v-mid"
+		style="height:30px;"/>
     <br/>
 	<label class="w-30" for="overview">Course's Overview:</label>
     <br/>
-	<input class="w-30" type="text" name="overview" required/>
+	<input class="w-30" type="text" name="overview" maxlength="200"/>
+	<img
+	src="{% static 'awesome-info.svg' %}"
+	class="img dib v-mid"
+	style="height:30px;"
+	title="Help of this field" />
     <br/>
 	<label class="w-30" for="quota">Quota:</label>
 	<br/>
     <input class="w-30" type="number" name="quota" default="0"/>
+		<img
+		src="{% static 'awesome-info.svg' %}"
+		class="img dib v-mid"
+		style="height:30px;"
+		title="Help of this field" />
 	<br/>
 	<label class="w-30" for="tags">Tags:</label>
 	<br/>
-	<input class="w-30" type="text" name="tags"/>
+	<input class="w-30" type="text" name="tags" maxlength="200"/>
+	<img
+	src="{% static 'awesome-info.svg' %}"
+	class="img dib v-mid"
+	style="height:30px;"
+	title="Help of this field" />
 	<br/>
     <button type="submit">Create</button>
   </form>
 </section>
-
+<script>
+      // With the above scripts loaded, you can call `tippy()` with a CSS
+      // selector and a `content` prop:
+      tippy('#h-coursetype', {
+        content: 'This name field is to identify easily each course by the users\
+									(in addition to its id number), its length is 30 alphanumerical\
+									characters as maximum,and this is mandatory',
+      });
+</script>
 {% endblock %}

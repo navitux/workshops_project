@@ -31,11 +31,10 @@ class Course(models.Model):
     (one CourseType to many Courses) and at first it can be empty.
     '''
     id = models.AutoField(primary_key=True)
-    name = models.CharField(verbose_name="Course's Name", help_text="This name field is to identify easily each course by the users (in addition to its id number), its length is 30 alphanumerical characters as maximum,and this is mandatory",max_length=30,blank=False,null=False)
+    name = models.CharField(verbose_name="Course's Name", help_text="This name field is to identify easily each course by the users (in addition to its id number automatically generated), its length is 30 alphanumerical characters as maximum,and this is mandatory",max_length=30,blank=False,null=False)
     overview = models.CharField(verbose_name="Course's Overview", help_text="This field is to give a brief overwiew about this course and its details in a maximum of 200 alphanumerical characters, and this is not mandatory",max_length=200,blank=True,null=False)
     tags = TaggableManager()
     quota = models.IntegerField(help_text="The quota field defines the maximum number of students allowed in this course, but if this value is not set or is zero, the course will not have a mandatory limit of students",default=0)
     course_type = models.ForeignKey(CourseType, blank=True, null=True, on_delete=models.SET_NULL, help_text="This field indicates the classification of this course")
-
     def __str__(self):
         return self.name

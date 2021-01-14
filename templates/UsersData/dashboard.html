@@ -20,20 +20,19 @@
     <br/>
     <input class="w-30" type="text" name="coursetype" maxlength="120" required/>
 	<img
-	id="h-coursetype"
+	id="help-coursetype"
 	src="{% static 'awesome-info.svg' %}"
 	class="img dib v-mid"
-	style="height:30px;"
-	title="Help of this field" />
+	style="height:1.5em;"/>
     <br/>
 	<label class="w-30" for="class_overview">Classification's Overview:</label>
     <br/>
 	<input class="w-30" type="text" name="class_overview" maxlength="200" required/>
 	<img
+	id="help-class_overview"
 	src="{% static 'awesome-info.svg' %}"
 	class="img dib v-mid"
-	style="height:30px;"
-	title="Help of this field" />
+	style="height:1.5em;"/>
     <br/>
     <button type="submit">Create</button>
   </form>
@@ -47,36 +46,37 @@
     <br/>
     <input class="w-30" type="text" name="course" maxlength="120" required/>
 		<img
+		id="help-course"
 		src="{% static 'awesome-info.svg' %}"
 		class="img dib v-mid"
-		style="height:30px;"/>
+		style="height:1.5em;"/>
     <br/>
 	<label class="w-30" for="overview">Course's Overview:</label>
     <br/>
 	<input class="w-30" type="text" name="overview" maxlength="200"/>
 	<img
+	id="help-overview"
 	src="{% static 'awesome-info.svg' %}"
 	class="img dib v-mid"
-	style="height:30px;"
-	title="Help of this field" />
+	style="height:1.5em;"/>
     <br/>
 	<label class="w-30" for="quota">Quota:</label>
 	<br/>
     <input class="w-30" type="number" name="quota" default="0"/>
 		<img
+		id="help-quota"
 		src="{% static 'awesome-info.svg' %}"
 		class="img dib v-mid"
-		style="height:30px;"
-		title="Help of this field" />
+		style="height:1.5em;"/>
 	<br/>
 	<label class="w-30" for="tags">Tags:</label>
 	<br/>
 	<input class="w-30" type="text" name="tags" maxlength="200"/>
 	<img
+	id="help-tags"
 	src="{% static 'awesome-info.svg' %}"
 	class="img dib v-mid"
-	style="height:30px;"
-	title="Help of this field" />
+	style="height:1.5em;"/>
 	<br/>
     <button type="submit">Create</button>
   </form>
@@ -84,10 +84,38 @@
 <script>
       // With the above scripts loaded, you can call `tippy()` with a CSS
       // selector and a `content` prop:
-      tippy('#h-coursetype', {
-        content: 'This name field is to identify easily each course by the users\
-									(in addition to its id number), its length is 30 alphanumerical\
-									characters as maximum,and this is mandatory',
-      });
+			var idies;
+			var content;
+			function tippies(idies,content){
+				tippy(idies, {
+        	content: content,
+					placement: 'right-start',
+					interactive: true,
+      	});
+		}
+		tippies('#help-coursetype','This name field is to identify easily each course\
+																by the users (in addition to its id number), its\
+																length is 30 alphanumerical characters as\
+																maximum,and this is mandatory');
+		tippies('#help-class_overview','This field is to give a brief overview \
+																		about this classification in a maximum of\
+																		200 alphanumerical characters, and this is\
+																		not mandatory');
+		tippies('#help-course','This name field is to identify easily each course \
+														by the users (in addition to its id number \
+														automatically generated), its length is 300 \
+														alphanumerical characters as maximum, and this is\
+														mandatory');
+		tippies('#help-overview','This field is to give a brief overwiew about this\
+		 													course and its details in a maximum of 200\
+															alphanumerical characters, and this is not\
+															mandatory');
+		tippies('#help-quota','The quota field defines the maximum number of \
+													 students allowed in this course, but if this \
+													 value is not set or is zero, the course will not \
+													 have a mandatory limit of students');
+		tippies('#help-tags','This field accepts sigle words separated by commas,\
+													this have the purpose of give key-words of the \
+													topics contained making it more searcheable');
 </script>
 {% endblock %}

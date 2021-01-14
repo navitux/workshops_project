@@ -14,13 +14,13 @@
 
 <section class="fl w-50 dib pa2">
   <b>Create a New Course Classification:</b>
-  <form id="create_coursetype" action="{% url 'dashboard' %}" method="post">
+  <form id="create_courseclass" action="{% url 'dashboard' %}" method="post">
     {% csrf_token %}
-    <label class="w-30" for="class_course">New Classification Name:</label>
+    <label class="w-30" for="courseclass_name">New Classification Name:</label>
     <br/>
-    <input class="w-30" type="text" name="coursetype" maxlength="120" required/>
+    <input class="w-30" type="text" name="courseclass_name" maxlength="120" required/>
 	<img
-	id="help-coursetype"
+	id="help-courseclass"
 	src="{% static 'awesome-info.svg' %}"
 	class="img dib v-mid"
 	style="height:1.5em;"/>
@@ -93,7 +93,7 @@
 					interactive: true,
       	});
 		}
-		tippies('#help-coursetype','This name field is to identify easily each course\
+		tippies('#help-courseclass_name','This name field is to identify easily each course\
 																by the users (in addition to its id number), its\
 																length is 30 alphanumerical characters as\
 																maximum,and this is mandatory');

@@ -35,7 +35,7 @@ user to search for other users)
 
 ### List of esential models used
 
-- CourseType  
+- CourseClass  
 - Course
 
 ### Dependencies

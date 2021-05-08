@@ -22,5 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name='index'),
     path('', include('SignUpIn.urls')),
-    path('', include('UsersData.urls')),
+    path('', include('Courses.urls')),
 ]
+
+handler404 = 'workshops.views.handler404'

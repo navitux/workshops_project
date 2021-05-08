@@ -1,0 +1,136 @@
+*{
+font-family:sans-serif;
+}
+body {
+font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.red-icon{
+  filter: invert(15%) sepia(91%) saturate(4590%) hue-rotate(356deg) brightness(96%) contrast(122%);
+}
+.green-icon{
+  filter: invert(81%) sepia(19%) saturate(788%) hue-rotate(86deg) brightness(86%) contrast(89%);
+}
+.white-icon{
+  filter: invert(100%) sepia(0%) saturate(1927%) hue-rotate(355deg) brightness(115%) contrast(100%);
+}
+.blue-icon{
+  filter: invert(62%) sepia(66%) saturate(566%) hue-rotate(185deg) brightness(87%) contrast(87%);
+}
+table{
+  border:solid black 1px;
+  border-collapse:collapse;
+}
+th{
+  border:solid black 1px;
+
+}
+td{
+  border:solid black 1px;
+
+}
+#delete-btn{
+  display: inline-block;
+  width:100%;
+  background-color:#e54b4b;
+  color:white;
+  border: none;
+  padding: 1em;
+  position: relative;
+  margin:0;
+  border-radius: 8px;
+}
+#delete-btn:hover{
+  background-color:#c44646;
+  color:#f4f4f4;
+}
+#delete-btn:active{
+  background-color:#db3b3b;
+  color:#e2e2e2;
+}
+.pre-delete-btn{
+  display: inline-block;
+  background-color:#e54b4b;
+  color:white;
+  border: none;
+  padding: 1em;
+  position: relative;
+  margin:0;
+  border-radius: 8px;
+}
+.pre-delete-btn:hover{
+  background-color:#c44646;
+  color:#f4f4f4;
+}
+.pre-delete-btn:active{
+  background-color:#db3b3b;
+  color:#e2e2e2;
+}
+.update-btn{
+  display: inline-block;
+  background-color:#3084dd;
+  color:white;
+  border: none;
+  padding: 1em;
+  position: relative;
+  margin:0;
+  border-radius: 8px;
+}
+.update-btn:hover{
+  background-color:#206fbf;
+  color:#f4f4f4;
+}
+.update-btn:active{
+  background-color:#1b63aa;
+  color:#e2e2e2;
+}
+.update-btn:disabled{
+  background-color:#a7bbe8;
+  color:white;
+}
+
+.alert-box {
+  display:block;
+  position:fixed;
+  bottom:0;
+  right:0;
+  color:black;
+  border-radius:10px;
+  font-family:Tahoma,Geneva,Arial,sans-serif;
+  font-size:1em;
+  padding:10px 36px;
+  margin:10px;
+
+  animation: fadeOut 4s forwards;
+  animation-delay: 2s;
+  background: red;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+.alert-box span {
+  font-weight:bold;
+  text-transform:uppercase;
+}
+.error {
+  background-color:#ffecec;
+  border:1px solid #f5aca6;
+}
+.success {
+  background-color:#e9ffd9;
+  border:1px solid #a6ca8a;
+}
+.warning {
+  background-color:#fff8c4;
+  border:1px solid #f2c779;
+}
+.notice {
+  background-color:#e3f7fc;
+  border:1px solid #8ed9f6;
+}

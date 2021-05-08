@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% load sizify %}
+
+<br>
+<h1>{{course.name}}</h1>
+<a href="{% url 'course' course.id %}" target="_blank">
+<img src="{% static 'read.svg' %}" width="20px" class="blue-icon" alt="SEE COURSE">
+open course in new tab
+</a>
+<br>
+<br>
+<b>Course name:</b>
+<br>
+{{course.name}}
+<br>
+<br>
+<b>Unique ID (uuid):</b>
+<br>
+{{course.id}}
+<br>
+<br>
+<b>Overview:</b>
+<br>
+<form id="update-overview" action="{% url 'update' course.id %}" method="post">
+{% csrf_token %}
+<textarea id="new_overview" name="new_overview" rows="8" cols="50">{{course.overview}}</textarea>
+<br>
+<input id="update" name="update" class="update-btn" type="submit" value="Update">
+</form>
+<br>
+<!-- Mechanism to edit the overview when the text is modified in textarea -->
+<script type="text/javascript">
+  // Functions to only allow update the course's overview when the orignal text
+  // and it's not empty
+  $(document).ready(function() {
+      $('input[name="update"]').attr('disabled', true);
+
+      $('input[name="new_overview"],textarea').on('keyup',function() {
+          const original = `{{course.overview}}`;
+          const textarea_value = $("#new_overview").val();
+          const text_value = $('input[name="new_overview"]').val();
+
+          if(textarea_value != '' && text_value != '' && textarea_value != original) {
+              $('input[name="update"]').attr('disabled', false);
+          } else {
+              $('input[name="update"]').attr('disabled', true);
+          }
+      });
+  });
+</script>
+{% if courses_files %}
+<h3>Files of Course</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Size</th>
+<th>Type</th>
+<th>UUID</th>
+<th>Image Preview</th>
+<th>Delete ?</th>
+</tr>
+</thead>
+<tbody>
+{% for f in courses_files %}
+<tr>
+<td>
+<small><a href="{{f.file.url}}" target="_blank">{{f.filename}}</a></small>
+</td>
+<td>
+<small>{{f.file.size|sizify}}</small>
+</td>
+<td>
+<small>{{f.type}}</small>
+</td>
+<td>
+<small>{{f.id}}</small>
+</td>
+{% if f.is_svg or f.is_image %}
+<td>
+<img src="{{f.file.url}}" style="height:5em; width:5em;"/>
+</td>
+{% else %}
+<td>Not image</td>
+{% endif %}
+<!-- Delete a single file from the course -->
+<td>
+<div id="file-delete-{{f.id}}" class="modal">
+  <b>Do you want to Delete this file ( {{f.filename}} ) ?</b>
+  <br>
+  <small>(Once you do click on DELETE the action cannot be undone)</small>
+  <br>
+  <br>
+  <form action="{% url 'update' course.id %}" method="post">
+    {% csrf_token %}
+  	<input type="hidden" name="id-file-removed" value="{{f.id}}" />
+    <input id="delete-btn" type="submit" value="DELETE FILE">
+  </form>
+</div>
+<a href="#file-delete-{{f.id}}" rel="modal:open" title="DELETE FILE">
+<button style="color:red;font-weight:bold;">
+  <img src="{% static 'trashcan.svg' %}" width="20px" class="red-icon" alt="DELETE FILE">
+</button>
+</a>
+</td>
+<!--  Delete a single file from the course -->
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<!-- Adding new files to the current course -->
+<form id="add-files" action="{% url 'update' course.id %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<label for="add-files-field"><b>Upload New Files:</b></label>
+<input id="add-files-field" name="add-files-field" type="file" multiple>
+<input type="reset" value="clear">
+<input type="submit" value="Upload New Files">
+</form>
+<!-- Adding new files to the current course -->
+
+<p><b>Total Course Size:</b> {{total_size|sizify}}</p>
+{% endif %}
+
+<!-- Deleting current course -->
+<div id="modal-delete" class="modal">
+<b>Do you want to Delete this Course ?</b>
+<br>
+<small>(Once you do click on DELETE the action cannot be undone)</small>
+<br>
+<br>
+<form action="{% url 'delete' %}" method="post">
+    {% csrf_token %}
+		<input type="hidden" name="id" value="{{course.id}}" />
+    <input id="delete-btn" type="submit" value="DELETE COURSE">
+</form>
+</div>
+<a class="pre-delete-btn" href="#modal-delete" rel="modal:open">Delete Course ?</a>
+<!-- Deleting current course -->
+
+
+{% if success %}
+<div class="alert-box success" style="color:black;">
+	<span style="color:black;">success: </span>
+	{{success}}
+</div>
+{% endif %}
+{% if error %}
+<div class="alert-box error" style="color:black;">
+	<span style="color:black;">error: </span>
+	{{error}}
+</div>
+{% endif %}
+{% endblock %}

@@ -44,15 +44,27 @@
 <article class="center ph3 ph5-ns ph0-l mw6">
 <b class="f4">Features</b>
   <ul align="justify">
-    <li>Free and Open Source</li>
-    <li>Easy to use</li>
+  <li>Free and Open Source</li>
+  <li>Easy to use</li>
 	<li>Easy instalation</li>
 	<li>Easy user registration</li>
-	<li>Allows upload your own courses or take courses made by the users</li>
-	<li>Allows manage your lists of courses or your courses taken</li>
-	<li>Allows set policies to your courses</li>
-	<li>Allows make user's list who take your courses and export them (with explicit permission from the users)</li>
-	<li>Allows import/export your own courses in a single file</li>
+  <li>Allows upload your own courses or take courses made by the users</li>
+	<li>Allows import/export your own courses in a single file in a standard
+      markdown/html5 format using the <a href="https://github.com/gnab/remark">
+      remark</a> technology for course's presentation in a single text file.</li>
+  </ul>
+</article>
+
+<article class="center ph3 ph5-ns ph0-l mw6">
+<b class="f4">Current List of Courses</b>
+  <ul align="justify">
+    {% if all_courses_hosted %}
+    {% for course in all_courses_hosted %}
+    <li><a href="{% url 'course' course.id %}">{{course.name}}</a></li>
+    {% endfor %}
+    {% else %}
+    <li>There's not courses available yet</li>
+    {% endif %}
   </ul>
 </article>
 

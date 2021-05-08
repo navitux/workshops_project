@@ -6,15 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <noscript>You need enable javascript to this site works properly</noscript>
   <link rel="icon" href="{% static 'icon.svg' %}">
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <!-- For general style (documentation: http://tachyons.io/docs/ )-->
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
   <!-- For style in tooltips boxes (documentation:https://atomiks.github.io/tippyjs/v6/getting-started/ ) -->
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
-  <style>
-	*{
-	font-family:sans-serif;
-	}
-  </style>
+  <link rel="stylesheet" href="{% static 'styles.css' %}"/>
   <title>Workshops</title>
 </head>
 <body>
@@ -30,10 +31,12 @@
     <a class="fr no-underline near-white bg-animate bg-near-black
       hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
       href="javascript:{document.getElementById('logout').submit()}"
-      onclick=""title="Log out to end session"><span class="f6 ml3 pr2 pa1">Logout</span></a>
-    <p class="fr near-white"title="This is your username"> Hello {{ user.username }} </p>
+      onclick="" title="Log out to end session"><span class="f6 ml3 pr2 pa1"> <img src="{% static 'logout.svg' %}" width="15px" class="white-icon"> Logout</span></a>
+    <p class="fr near-white" title="This is your username"> <img src="{% static 'user.svg' %}" width="15px" class="white-icon">  {{ user.username }} </p>
 	<a class="fr link no-underline near-white bg-animate ma2 tc br2 pa2"
-      href="{% url 'dashboard' %}"title="Go to your dashboard">Dashboard</a>
+      href="{% url 'dashboard' %}" title="Go to your dashboard"><img src="{% static 'dashboard.svg' %}" width="15px" class="white-icon"> Dashboard</a>
+      <a class="fr link no-underline near-white bg-animate ma2 tc br2 pa2"
+          href="{% url 'create' %}" title="Create a New Course"><img src="{% static 'add.svg' %}" width="15px" class="white-icon"> New Course</a>
     <form id="logout" method="POST" action="{% url 'logout' %}">
     {% csrf_token %}
     <input type="hidden" />
@@ -52,5 +55,6 @@
   {% endblock %}
   <br/>
   <br/>
+  <script type="text/javascript" src="{% static 'scripts.js' %}"></script>
 </body>
 </html>

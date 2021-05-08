@@ -1,5 +1,5 @@
 from django.shortcuts import render,  redirect
-from UsersData.models import *
+from Courses.models import *
 from django.contrib.auth.models import User
 from django.contrib import auth
 # Create your views here.

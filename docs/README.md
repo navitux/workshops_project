@@ -39,7 +39,7 @@ user to search for other users)
 - Course
 
 ### Dependencies
-I try (navitux) to keep only esential and necessary dependencies:
+I try (navitux) to keep only esential and necessary dependencies (trying, of course, not to reinvent the wheel):
 
 `
 Django==2.2.16

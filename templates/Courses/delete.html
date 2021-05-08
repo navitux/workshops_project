@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<p>The Course {{course}} ( {{id}} ) has been erased successfully.</p>
+<a href="{% url 'dashboard' %}">Back to your courses</a>
+{% endblock %}

@@ -35,9 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taggit',
-    'UsersData',
+    'Courses',
     'SignUpIn',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'workshops.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'workshops_db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'workshops',
+        'USER': 'postgres',
+        'PASSWORD': 'django1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -123,3 +127,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Setting default permissions to uploaded files:
+FILE_UPLOAD_PERMISSIONS = 0o600

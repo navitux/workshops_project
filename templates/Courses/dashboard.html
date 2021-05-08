@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<h2>Courses made by you: {{user.username}}</h2>
+{% if all_courses_of_user %}
+
+<table>
+<th>Course name</th>
+<th>Unique ID (UUID)</th>
+<th>Overview</th>
+<th>Actions</th>
+{%for c in all_courses_of_user %}
+<div id="modal-delete" class="modal">
+<b>Do you want to Delete this Course ?</b>
+<br>
+<small>(Once you do click on DELETE the action cannot be undone)</small>
+<br>
+<br>
+<form action="{% url 'delete' %}" method="post">
+    {% csrf_token %}
+		<input type="hidden" name="id" value="{{c.id}}" />
+    <input id="delete-btn" type="submit" value="DELETE COURSE">
+</form>
+</div>
+<tr>
+<td>
+<b>{{c.name}}</b>
+</td>
+<td>
+<small>{{c.id}}</small>
+</td>
+<td>
+<small>{{c.short_overview}}</small>
+</td>
+<td>
+<a href="#modal-delete" rel="modal:open" title="DELETE COURSE">
+  <button style="color:red;font-weight:bold;">
+    <img src="{% static 'trashcan.svg' %}" width="20px" class="red-icon" alt="DELETE COURSE">
+  </button>
+</a>
+<a href="{% url 'update' c.id %}" title="UPDATE COURSE INFO/MATERIAL">
+  <button style="color:green;font-weight:bold;">
+    <img src="{% static 'edit.svg' %}" width="20px" class="green-icon" alt="EDIT COURSE">
+  </button>
+</a>
+<a href="{% url 'course' c.id %}" title="SEE THIS COURSE">
+  <button style="color:blue;font-weight:bold;">
+    <img src="{% static 'read.svg' %}" width="20px" class="blue-icon" alt="SEE COURSE">
+  </button>
+</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+	<h1>There's no courses created yet, <a href="{% url 'create' %}"><img src="{% static 'add.svg' %}" width="15px"> create one now</a></h1>
+{% endif %}
+
+{% if success %}
+<div class="alert-box success" style="color:black;">
+	<span style="color:black;">success: </span>
+	{{success}}
+</div>
+{% endif %}
+{% if error %}
+<div class="alert-box error" style="color:black;">
+	<span style="color:black;">error: </span>
+	{{error}}
+</div>
+{% endif %}
+{% endblock %}

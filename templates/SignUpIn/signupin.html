@@ -27,7 +27,7 @@
     <input type="text" name="username_r" maxlength="150" required />
     <img
   	id="help-username_r"
-  	src="{% static 'awesome-info.svg' %}"
+  	src="{% static 'info.svg' %}"
   	class="img dib v-mid"
   	style="height:1.5em;"/>
       <br/>
@@ -37,7 +37,7 @@
     <input type="text" name="firstname" maxlength="150" required />
     <img
   	id="help-firstname"
-  	src="{% static 'awesome-info.svg' %}"
+  	src="{% static 'info.svg' %}"
   	class="img dib v-mid"
   	style="height:1.5em;"/>
     <br/>
@@ -46,7 +46,7 @@
     <input type="text" name="lastname" maxlength="150" required />
     <img
   	id="help-lastname"
-  	src="{% static 'awesome-info.svg' %}"
+  	src="{% static 'info.svg' %}"
   	class="img dib v-mid"
   	style="height:1.5em;"/>
     <br/>
@@ -55,7 +55,7 @@
     <input type="email" name="email"/>
     <img
   	id="help-email"
-  	src="{% static 'awesome-info.svg' %}"
+  	src="{% static 'info.svg' %}"
   	class="img dib v-mid"
   	style="height:1.5em;"/>
     <br/>
@@ -64,7 +64,7 @@
     <input type="password" name="password1" required/>
     <img
   	id="help-password1"
-  	src="{% static 'awesome-info.svg' %}"
+  	src="{% static 'info.svg' %}"
   	class="img dib v-mid"
   	style="height:1.5em;"/>
     <br/>
@@ -76,30 +76,6 @@
   </form>
 </section>
 
-<script>
-      // With the above scripts loaded, you can call `tippy()` with a CSS
-      // selector and a `content` prop:
-			var idies;
-			var content;
-			function tippies(idies,content){
-				tippy(idies, {
-        	content: content,
-					placement: 'right-start',
-					interactive: true,
-      	});
-		}
-		tippies('#help-username_r','Your username must be unique and its maximum\
-                                length is of 150 alphanumerical characters');
-    tippies('#help-firstname','Your first name(s) can have as maximum of\
-                                150 alphanumerical characters of length');
-    tippies('#help-lastname','Your last name(s) can have as maximum of\
-                                150 alphanumerical characters of length');
-    tippies('#help-email','This field is not mandatory but it can help to\
-                           others users and administrators to get in touch with\
-                           you');
-    tippies('#help-password1','Is recommended that your password have 10 or \
-                               more alphanumerical characters');
-</script>
 {% if success %}
 <div class="alert-box success" style="color:black;">
 	<span style="color:black;">success: </span>

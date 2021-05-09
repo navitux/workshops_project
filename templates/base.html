@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{% static 'styles.css' %}"/>
   <title>Workshops</title>
 </head>
-<body>
+<body class>
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
   <nav class="pa1" style="background-color:#393D46;">
@@ -51,8 +51,10 @@
     <!-- .............. -->
     {% endif %}
   </nav>
+  <section class="ma3">
   {% block content %}
   {% endblock %}
+  </section>
   <br/>
   <br/>
   <script type="text/javascript" src="{% static 'scripts.js' %}"></script>

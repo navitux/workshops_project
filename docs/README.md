@@ -1,59 +1,41 @@
-## General view
+# WORKSHOPS
 
-Workshops is a project implemented in Python (version 3.8.x) using Django (version 2.2.x) (based on a previous implementation in PHP) that consists of a project composed of applications that respectively installed in server (here and onwards the server or machine where Workshops is installed we will call "instance"): Allow the management of lists of students in courses that are classified by departments, Allow logging in as a student, teacher or administrator, and one that shows a control panel or home page according to the role that each user has. Other functionalities can be added in the future (that's why it has been implemented in Django, ensuring a coherent structure of the project and its applications).
+## ABOUT
 
-### The basic functions and features to acomplish (for this reason, by the moment this is not a complete product yet) are:
+Workshops is an open source, simple, dead-lightweight LMS (Learning Management System) application programmed in Python (version 3.8.x) with Django (version 2.2.x) web framework which main purpose is to make a standarized way to share knowledge via courses in a slide-based view in browser powered by [remark](https://github.com/gnab/remark) javascript library, easy to create, edit, delete and show your courses using simple markdown and html if necessary.
+Inspired on an old project in my social labours to help share knowledge in an easy way.
 
-- Be a complete free and Open Source Software
-
-- Perform creation/reading/updating/deleting (CRUD) operations on courses and classifications sorted or unsorted by different filters (individually or in batches).
-
-- Allow import/export your own courses in a standarized single file (making them independant of the instances)
-
-- Create documentation easily accesible for all users (with a brief help messages of use and/or reference's links to documentation in the content).
-
+## FEATURES
+- It's FOSS software (Free and Open Source) !!
 - Easy to use (for all users registered or not in the instance)
-
 - Easy Instalation (for production or test environment)
-
-- Allow upload your own courses or take courses made by the users in your own local or external instance
-
-- Allow manage your lists of courses or your courses taken (in your dashboard inside your instance)
-
-- Allow set policies to your courses (this is applied through the 'classifications' in each instance's context it means that policies applies inside the instance but not in others, this policies can be: a banned user's list a password to access, assign administrator's permission to a other user)
-
-- Allow make user's list who is taking the course in its classification and export them (with explicit permission from the users in a simple text file format or another more complex like LibreOffice SpreadSheets as .odt files )
+- Perform creation/reading/updating/deleting (CRUD) operations on courses.
+- Allow import/export your own courses in a standarized single file (making them independant of the instances) this can be acomplished modifying/exporting the most important file in each course that is the **course**.**md** file and downloading the uploaded resources as well.
+- You can download the course a pdf using the buitin function in browser (it will be optimized in future).
 
 
-### List of apps and its status of work
-( ✓ = done, ↪ = in progress, 💡 = idea )
-- [✓] A portal page (the portal to login and which will be the home page)
-- [✓] A login/register app.
-- [✓] Dashboard (the main panel of administration of users in the instances)    
-- [↪] UserBrowser (application used to perform searches for any
-user to search for other users)                                       
+## DEPENDENCIES
 
-### List of esential models used
+I try to keep only esential and necessary dependencies (trying, of course, not to reinvent the wheel):
 
-- CourseClass  
-- Course
-
-### Dependencies
-I try (navitux) to keep only esential and necessary dependencies (trying, of course, not to reinvent the wheel):
-
-`
+```
 Django==2.2.16
-`
-`
-django-taggit==1.3.0
-`
-`
+django-cleanup==5.1.0
+psycopg2-binary==2.8.6
+python-magic==0.4.22
 pytz==2020.4
-`
-`
 sqlparse==0.4.1
-`
+```
+And as dependencies in the frontend (CSS and javascript libraries) I used:
+```
+jquery 3.6.0
+jquery-modal 0.9.1
+tippy.js 6
+poppersjs 2
+remarkjs
+tachyons 4.12.0
+```
 
-### Documentation and License
+## LICENSE
 
 The project documentation and the license used are in the 'docs' folder inside the main directory, this project uses the open source GNU GPLv3 license.

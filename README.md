@@ -1,3 +1,5 @@
+# WORKSHOPS
+
 ## ABOUT
 
 Workshops is an open source, simple, dead-lightweight LMS (Learning Management System) application programmed in Python (version 3.8.x) with Django (version 2.2.x) web framework which main purpose is to make a standarized way to share knowledge via courses in a slide-based view in browser powered by [remark](https://github.com/gnab/remark) javascript library, easy to create, edit, delete and show your courses using simple markdown and html if necessary.

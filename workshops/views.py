@@ -1,7 +1,8 @@
-from django.http import HttpResponse
-from django.shortcuts import render, render_to_response, get_list_or_404
-from django.template import RequestContext
 from Courses.models import *
+from django.conf import settings
+from django.http import HttpResponse
+from django.template import RequestContext
+from django.shortcuts import render, render_to_response, get_list_or_404
 '''
 This file was made for render the index.html page that represents the main page
 of Workshops where is the general information about this project, how it works,
@@ -19,6 +20,12 @@ def index(request):
         return render(request,'index.html',context)
     else:
         return render(request,'index.html')
+
+
+# This is to return the documentation from a markdown file to an html format
+def docs(request):
+    return render(request,'docs.html')
+
 
 # Handling 404 responses:
 def handler404(request, *args, **argv):

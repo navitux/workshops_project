@@ -7,3 +7,4 @@ __pycache__/
 *.sqlite3
 media
 migrations
+local_settings.py

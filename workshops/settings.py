@@ -130,3 +130,9 @@ MEDIA_URL = '/media/'
 
 # Setting default permissions to uploaded files:
 FILE_UPLOAD_PERMISSIONS = 0o600
+
+# loading settings from local_settings.py file if it exists:
+try:
+    from local_settings import *
+except ImportError:
+    pass

@@ -1,10 +1,407 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-{% if error %}
-{{ error }}
-<br />
-<br />
-{% endif %}
+<h1>WORKSHOPS</h1>
 
+<h2>ABOUT</h2>
+<p>Workshops is an open source, simple, dead-lightweight LMS (Learning Management System) application programmed in Python (version 3.8.x) with Django (version 2.2.x) web framework which main purpose is to make a standardized way to share knowledge via courses in a slide-based view in browser powered by <a href="https://github.com/gnab/remark">remark</a> JavaScript library, easy to create, edit, delete and show your courses using simple markdown and HTML if necessary.
+Inspired on an old project in my social labours (and now with the new 'normality' given by the global pandemic in 2020) to help share knowledge in an easy way without using privative and/or complicated software.</p>
+<h2>FEATURES</h2>
+<ul>
+<li>It's FOSS software (Free and Open Source) !!</li>
+<li>Easy to use (for all users registered or not in the instance)</li>
+<li>Intuitive interface with quick help and advices</li>
+<li>Easy Installation (for production or test environment)</li>
+<li>Perform creation/reading/updating/deleting (CRUD) operations on courses</li>
+<li>Allow import/export your own courses in a standardized single file (making them independent of the instances) this can be accomplished modifying/exporting the most important file in each course that is the <strong>course</strong>.<strong>md</strong> file and downloading the uploaded resources as well</li>
+<li>You can download the course a PDF using the builtin function in browser (it will be optimized in future)</li>
+</ul>
+<h2>DEPENDENCIES</h2>
+<p>I try to keep only essential and necessary dependencies (trying, of course, not to reinvent the wheel):</p>
+<pre>
+<code>
+Django==2.2.16
+django-cleanup==5.1.0
+psycopg2-binary==2.8.6
+python-magic==0.4.22
+pytz==2020.4
+sqlparse==0.4.1
+</code>
+</pre>
+And as dependencies in the front-end (CSS and JavaScript libraries) I used:
+<pre>
+<code>
+jquery 3.6.0
+jquery-modal 0.9.1
+tippy.js 6
+poppersjs 2
+remarkjs 0.14.0
+tachyons 4.12.0
+</code>
+</pre>
+<h2>INSTALLATION</h2>
+
+<h3>Preinstallation:</h3>
+<p>It's important mention that you must know the basics about how Django webapps
+works and how to setup a real configuration for a production instance.</p>
+<p>You must create a Postgresql database. Here is a brief
+tutorial to install Postgresql and create a database:</p>
+<ul>
+<li>
+<p>On Debian/Ubuntu:</p>
+<p><code>$ sudo apt install postgresql postgresql-contrib</code></p>
+</li>
+<li>
+<p>On CentOS:</p>
+<p><code>$ sudo yum install postgresql-server postgresql-contrib</code></p>
+</li>
+</ul>
+<p>Once installed and configured your username as you prefer, you can access
+your postgres CLI with the sudo user (not recommended for production
+environments): <code>sudo -u postgres psql</code> , we will proceed
+to create a new database:</p>
+<pre><code>$ sudo -u postgres createdb workshops
+</code></pre>
+<p>Alternatively you can add a <code>local_settings.py</code> file as part of your own configuration
+for your particular environment and tests (and this is SUPER IMPORTANT in a
+production environment to keep secure your database's credentials, your SECRET_KEY
+and DEBUG global variables for example) it must be located on the workshops/
+folder, aside the <code>settings.py</code> file of the project.</p>
+
+<h3>Quick installation for development/test environment</h3>
+<ol>
+<li>
+<p>You can setup a virtual environment installing <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>
+and typing the following commands in terminal (assuming that you're using a *nix-like environment):</p>
+<p><code>$ virtualenv &lt;folder_name&gt;</code></p>
+<p>Then you can activate it:</p>
+<p><code>$ source &lt;folder_name&gt;/bin/activate</code></p>
+<p>(and optionally you can exit from the virtual environment typing: <code>deactivate</code>)</p>
+</li>
+
+<li>
+<p>Once made that you can download the project using git or simply downloading it
+in a zip format and unzip it and go to the main top folder of workshops:</p>
+<pre>
+<code>
+(using git)
+$ git clone https://github.com/navitux/workshops_project.git
+$ cd workshops_project/
+(unzipping it)
+$ unzip workshops_project-master.zip
+$ cd workshops_project-master/
+</code>
+</pre>
+</li>
+
+<li>
+<p>Using pip (inside the virtual environment) install the necessary dependencies
+with pip from requirements.txt:</p>
+    <code>$ pip install -r requirements.txt</code>
+</li>
+<br>
+<li>
+<p>We will run the default django's web server typing:</p>
+  <code>$ python manage.py runserver</code>
+</li>
+</ol>
+
+
+<h2>BASIC USAGE</h2>
+<h3>Login and Signup</h3>
+<p>Once the application is running on the instance you can login or create a new
+account clicking directly in the "Login/Signup" button at the first page loaded:</p>
+<p><img src="{% static 'res/logging.png' %}" style="width:800px; height:400px;" alt="logging/signup button"></p>
+<p>and you must be redirected to a your-server-name + /signupin/ url
+(I'm using the default test environment configuration in the example):</p>
+<p><img src="{% static 'res/login-url.png' %}" alt=" http://127.0.0.1:8000/signupin/ "></p>
+<p>And this is the login and 1st signup page:</p>
+<p><img src="{% static 'res/signup.png' %}" style="width:800px; height:400px;" alt="logging/signup page"></p>
+<h3>Creating your courses:</h3>
+<p>Once you have logged in you will see your username and other links in the
+navigation bar as follows, you can just click on the "+ New Course" button
+to begin making a course:</p>
+<p><img src="{% static 'res/creating.png' %}" style="width:800px; height:400px;" alt="creating a course"></p>
+<p>One clicked, you will be redirected to your-server-name + /create/ url:</p>
+<p><img src="{% static 'res/create-url.png' %}" alt=" http://127.0.0.1:8000/create/ ">
+<br>
+<br>
+<img src="{% static 'res/creating-1.png' %}" style="width:800px; height:400px;" alt="Creating a Course"></p>
+<p>You can upload images,videos, and the main and most important file: '<strong>course</strong>.<strong>md</strong>' file</p>
+<p>When you are creating your course the <strong>most important file must be the *<em>course<strong>.</strong>md</em></strong>*
+( this file must be named in this way to avoid failures or unexpected behaviors)
+that will give the presentation and final layout to the course to be showed, it is
+a plain text file formatted with markdown syntax following the rules of the
+<a href="https://github.com/gnab/remark">remark</a> JavaScript library (that does not vary so much
+than normal markdown syntax) to arrange content in web slides in browser otherwise
+the course does not will be showed.</p>
+<h4>How to write a good <strong>course</strong>.<strong>md</strong> file:</h4>
+<p>This is a brief example of a well written <strong>course</strong>.<strong>md</strong> file:
+<pre>
+<code>
+  class: center, middle
+
+  # Cool course1
+
+  ---
+
+  # Agenda
+
+  1. Blah
+  2. Blah blah
+  3. Blah blah blah
+
+  ---
+
+  # Introduction
+
+  ![logo image](LOCAL:logo.png)
+
+  ???
+  This slide only shows an embed image file uploaded in the instance
+  ---
+
+  <textarea readonly cols="160" rows="1"><iframe width="560" height="315" src="LOCAL:funny_video.mp4" frameborder="0" allow="encrypted-media" allowfullscreen></iframe></textarea>
+
+  ???
+  This slide only shows an embed video file uploaded in the instance
+</code>
+</pre>
+<p>The syntax is basically as follows according to the wiki of remarkjs library
+( <a href="https://github.com/gnab/remark/wiki/Markdown">remarkjs-markdown</a> )we will
+include here only the most important aspects:</p>
+<h2>IMPORTANT NOTE:</h2>
+<p>As is showed in the example file, to include the images or video files included
+in your course YOU MUST INCLUDE THIS AS FOLLOWS: 'LOCAL:image.png' (without
+quotes and all in caps with the name of the file without any space) in the url
+of your file, just the key word <code>LOCAL:</code> and the filename such as <code>image.png</code>
+without any space, otherwise the image, video or file will not be showed.</p>
+<h4>Slide Separators</h4>
+<p>A line containing three dashes, represents a slide separator (not a horizontal rule, <code>&lt;hr&gt;</code>,
+like in regular Markdown). Thus, a simple Markdown text like the one below
+represents a slideshow with two slides:
+<pre>
+<code>
+# Slide 1
+This is slide 1
+---
+# Slide 2
+This is slide 2
+</code>
+</pre>
+<h4>Incremental Slides</h4>
+<p>To avoid having to duplicate content if a slide is going to add to the previous
+one, using only two dashes to separate slides will make a slide inherit the
+content of the previous one:
+<pre>
+<code>
+# Slide
+
+- bullet 1
+--
+
+- bullet 2
+```
+The above text expands into the following:
+```
+# Slide
+
+- bullet 1
+---
+
+# Slide
+
+- bullet 1
+- bullet 2
+</code>
+</pre>
+
+<h4>Slide Notes</h4>
+<p>A line containing three question marks represents a separator of content and
+note of the slide:
+<pre>
+<code>
+# Slide
+
+Some content.
+
+???
+Some note.
+</code>
+</pre>
+<p>A notes open version of a slide show can be shared by sharing the url with #p1
+appended. Such as remarkjs.com/#p1.</p>
+<p>With Incremental Slides the notes go after each increment
+<pre>
+<code>
+  Hello
+  ???
+  notes for hello
+  --
+  World
+  ???
+  notes for world
+</code>
+</pre>
+<h4>Comments</h4>
+<p>If you want to leave a comment in your markdown, but not render it in the Slide
+Notes, you can use either of the two following methods. The HTML style comment
+will be available in the page's source in the browser, while the empty link
+will not be.
+HTML
+<pre>
+<textarea rows="3" cols="40">
+<!--
+I'm a comment.
+-->
+</textarea>
+</pre>
+
+<h4>Empty Link</h4>
+<pre>
+<textarea rows="3" cols="40">
+[//]: # (I'm a comment)
+</textarea>
+</pre>
+<h4>Slide Properties</h4>
+<p>Initial lines of a slide on a key-value format will be extracted as slide properties.</p>
+<h4>name</h4>
+<p>The name property accepts a name used to identify the current slide:
+<pre>
+  <code>
+  name: agenda
+
+  # Agenda
+  </code>
+</pre>
+<p>A slide name may be used to:</p>
+<pre><code>Link to a slide using URL fragment, i.e. slideshow.html#agenda, or in Markdown; [the agenda](#agenda)
+
+Navigate to a slide using the API, i.e. slideshow.gotoSlide('agenda')
+
+Identify slide DOM element, either for scripting or styling purposes
+</code></pre>
+<h4>background-image</h4>
+<p>The background-image property maps directly to the background-image CSS property,
+which are applied to the current slide:
+<pre>
+<code>
+background-image: url(LOCAL:image.jpg)
+
+# Slide with background image
+</code>
+</pre>
+<p>REMEMBER: We use the keyword `LOCAL:` if the file was uploaded in the current
+course otherwise this will not work.</p>
+
+<h4>count</h4>
+<p>The <code>count</code> property allows for specific slides not to be included in the slide
+count, which is by default displayed in the lower right corner of the slideshow:
+<pre>
+<code>
+count: false
+
+This slide will not be counted.
+</code>
+</pre>
+<p>When the countIncrementalSlides configuration option is enabled, all
+incremental slides will automatically have the<code>count: false</code> slide property set.</p>
+<h4>template</h4>
+<p>The <code>template</code> property names another slide to be used as a template for the
+current slide:
+<pre>
+<code>
+name: other-slide
+
+Some content.
+
+---
+template: other-slide
+
+Content appended to other-slide's content.
+```
+The final content of the current slide will then be this:
+```
+Some content.
+
+Content appended to other-slide's content.
+</code>
+</pre>
+<p>Both template slide content and properties are prepended to the current slide,
+with the following exceptions:</p>
+<pre><code>`name` and `layout` properties are not inherited
+`class` properties are merged, preserving class order
+</code></pre>
+<p>The <code>template</code> property may be used to (apparently) add content to a slide
+incrementally, like bullet lists appearing a bullet at a time.</p>
+<p>Using only two dashes (--) to separate slides implicitly uses the preceding slide as a template:
+<pre>
+<code>
+  # Agenda
+
+  --
+  1. Introduction
+
+  --
+  2. Markdown formatting
+</code>
+</pre>
+<p>Template slides may also contain a special {{content}} expression to
+explicitly position the content of derived slides, instead of having it
+implicitly appended.</p>
+<h4>layout</h4>
+<p>The layout property either makes the current slide a layout slide, which is omitted from the slideshow and serves as the default template used for all subsequent slides:
+<pre>
+<code>
+  layout: true
+
+  # Section
+
+  ---
+
+  ## Sub section 1
+
+  ---
+
+  ## Sub section 2
+</code>
+</pre>
+<p>Or, when set to false, reverts to using no default template.</p>
+<p>Multiple layout slides may be defined throughout the slideshow to define a common template for a series of slides.</p>
+<h3>Seeing courses:</h3>
+<p>You can see all courses hosted in the current instance on the main page:</p>
+<p><img src="{% static 'res/list-all-courses.png'%}" style="width:800px; height:400px;" alt="all courses"></p>
+<h3>Seeing your own courses:</h3>
+<p>You can click on "Dashboard" button in the navbar:</p>
+<p><img src="{% static 'res/dashboard-button.png' %}" style="width:1000px; height:400px;" alt="dashboard button"></p>
+<p>then you will see here all courses made for you:</p>
+<p><img src="{% static 'res/dashboard.png' %}" style="width:800px; height:400px;" alt="dashboard"></p>
+<p>and finally pressing on the "view button" you can open your course as bellow:</p>
+<p><img src="{% static 'res/example1-course.png' %}" style="width:800px; height:400px;" alt="example course"></p>
+<p>To share the course you can just copy the url of the course since each course
+have an unique identifier accross all instances.</p>
+<h2>LICENSE</h2>
+<p>This project uses the open source GNU GPLv3 license.</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program.  If not, see <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+<h2>CREDITS</h2>
+<ul>
+<li>
+<p>Creator: Ivan Robles <a href="https://github.com/navitux/">navitux</a></p>
+</li>
+<li>
+<p>Course's presentation RemarkJS: <a href="https://github.com/gnab/remar">remark</a></p>
+</li>
+<li>
+<p>Graphical resources: <a href="https://www.svgrepo.com/" target="_blank">https://www.svgrepo.com/</a></p>
+</li>
+</ul>
 {% endblock %}

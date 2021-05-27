@@ -29,7 +29,6 @@ def course(request,course_id):
             hostname = request.get_host()
             scheme = request.is_secure() and 'https' or 'http'
             fullhostname = scheme+'://'+hostname
-            print('Dirección local: '+fullhostname)
             course_md = course_md.replace('LOCAL:',fullhostname+'/media/'+str(course.id)+'/')
             course_md_file.close()
             context = {

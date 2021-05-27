@@ -2,11 +2,27 @@
 {% load staticfiles %}
 {% block content %}
 <style>
-     .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-     #source{
-       display:none;
-     }
+  .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+  .remark-slide-number {
+    bottom: 5%;
+    opacity: .8;
+    position: absolute;
+    right: 20px;}
+  .remark-slides-area{
+    display:absolute;
+    bottom:1%;
+    height:80%;
+  }
+  #btntoggle{
+    z-index:999;
+  }
 </style>
+<button type="button" id="btntoggle">
+  <img src="{% static 'collapse.svg' %}"
+       alt="Show/Hide Navigation Bar"
+       title="Show/Hide Navigation Bar"
+       width="20px">
+</button>
 <textarea id="source">
 {% if course_md %}
 {{ course_md }}
@@ -14,8 +30,24 @@
 There's no 'course.md' file in the course
 {% endif %}
 </textarea>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create();</script>
+<script src="{%static 'remark-0.14.0.min.js'%}"></script>
+<script>
+  const slideshow = remark.create({
+  // Navigation options
+  navigation: {
+    scroll: true,
+    touch: true,
+    click: false,
+  },
+   ratio: '4:3',
+   slideNumberFormat: "%current% / %total%",
+});
+$(document).ready(function(){
+    $("#btntoggle").click(function(){
+        $("nav").toggle();
+    });
+});
+</script>
 {% if error %}
 <div class="alert-box error" style="color:black;">
 	<span style="color:black;">error: </span>

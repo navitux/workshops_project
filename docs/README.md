@@ -60,22 +60,28 @@ tutorial to install Postgresql and create a database:
 - On Debian/Ubuntu:
 
     ```
-    $ sudo apt install postgresql postgresql-contrib
+    sudo apt install postgresql postgresql-contrib
     ```
 
 - On CentOS:
 
     ```
-    $ sudo yum install postgresql-server postgresql-contrib
+    sudo yum install postgresql-server postgresql-contrib
     ```
+
+- On Arch Linux:
+  ```
+  sudo pacman -S postgresql
+  ```
 
 Once installed and configured your username as you prefer, you can access
 your postgres CLI with the sudo user (not recommended for production
 environments): ```sudo -u postgres psql``` , we will proceed
 to create a new database:
 
-
-    $ sudo -u postgres createdb workshops
+    ```
+    sudo -u postgres createdb workshops
+    ```
 
 Alternatively you can add a `local_settings.py` file as part of your own configuration
 for your particular environment and tests (and this is SUPER IMPORTANT in a
@@ -123,30 +129,30 @@ with pip from requirements.txt:
 Once the application is running on the instance you can login or create a new
 account clicking directly in the "Login/Signup" button at the first page loaded:
 
-<img src="res/logging.png" style="width:800px; height:400px;" alt="logging/signup button">
+<img src="../static/res/logging.png" style="width:800px; height:400px;" alt="logging/signup button">
 
 and you must be redirected to a your-server-name + /signupin/ url
 (I'm using the default test environment configuration in the example):
 
-<img src="res/login-url.png" alt=" http://127.0.0.1:8000/signupin/ ">
+<img src="../static/res/login-url.png" alt=" http://127.0.0.1:8000/signupin/ ">
 
 And this is the login and 1st signup page:
 
-<img src="res/signup.png" style="width:800px; height:400px;" alt="logging/signup page">
+<img src="../static/res/signup.png" style="width:800px; height:400px;" alt="logging/signup page">
 
 ### Creating your courses:
 Once you have logged in you will see your username and other links in the
 navigation bar as follows, you can just click on the "+ New Course" button
 to begin making a course:
 
-<img src="res/creating.png" style="width:800px; height:400px;" alt="creating a course">
+<img src="../static/res/creating.png" style="width:800px; height:400px;" alt="creating a course">
 
 One clicked, you will be redirected to your-server-name + /create/ url:
 
-<img src="res/create-url.png" alt=" http://127.0.0.1:8000/create/ ">
+<img src="../static/res/create-url.png" alt=" http://127.0.0.1:8000/create/ ">
 <br>
 <br>
-<img src="res/creating-1.png" style="width:800px; height:400px;" alt="Creating a Course">
+<img src="../static/res/creating-1.png" style="width:800px; height:400px;" alt="Creating a Course">
 
 You can upload images,videos, and the main and most important file: '**course**.**md**' file
 
@@ -389,20 +395,20 @@ Multiple layout slides may be defined throughout the slideshow to define a commo
 ### Seeing courses:
 You can see all courses hosted in the current instance on the main page:
 
-<img src="res/list-all-courses.png" style="width:800px; height:400px;" alt="all courses">
+<img src="../static/res/list-all-courses.png" style="width:800px; height:400px;" alt="all courses">
 
 ### Seeing your own courses:
 You can click on "Dashboard" button in the navbar:
 
-<img src="res/dashboard-button.png" style="width:1000px; height:400px;" alt="dashboard button">
+<img src="../static/res/dashboard-button.png" style="width:1000px; height:400px;" alt="dashboard button">
 
 then you will see here all courses made for you:
 
-<img src="res/dashboard.png" style="width:800px; height:400px;" alt="dashboard">
+<img src="../static/res/dashboard.png" style="width:800px; height:400px;" alt="dashboard">
 
 and finally pressing on the "view button" you can open your course as bellow:
 
-<img src="res/example1-course.png" style="width:800px; height:400px;" alt="example course">
+<img src="../static/res/example1-course.png" style="width:800px; height:400px;" alt="example course">
 
 To share the course you can just copy the url of the course since each course
 have an unique identifier accross all instances.

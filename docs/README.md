@@ -79,9 +79,9 @@ your postgres CLI with the sudo user (not recommended for production
 environments): ```sudo -u postgres psql``` , we will proceed
 to create a new database:
 
-    ```
-    sudo -u postgres createdb workshops
-    ```
+  ```
+  sudo -u postgres createdb workshops
+  ```
 
 Alternatively you can add a `local_settings.py` file as part of your own configuration
 for your particular environment and tests (and this is SUPER IMPORTANT in a

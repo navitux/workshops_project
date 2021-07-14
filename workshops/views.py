@@ -11,15 +11,16 @@ purpose of this, Frequent Asked Questions and technical stuffs as requeriments,
 instalation and administration introductions as well.
 '''
 def index(request):
-    all_courses_hosted = get_list_or_404(Course)
+    all_courses_hosted = Course.objects.all()
     print(str(all_courses_hosted))
-    if all_courses_hosted:
+    if all_courses_hosted != []:
         context = {
-        'all_courses_hosted':all_courses_hosted,
+        'all_courses_hosted':all_courses_hosted
         }
         return render(request,'index.html',context)
     else:
-        return render(request,'index.html')
+        context = {'all_courses_hosted': 'There are no courses yet in this instace'}
+        return render(request,'index.html',context)
 
 
 # This is to return the documentation from a markdown file to an html format
@@ -28,7 +29,7 @@ def docs(request):
 
 
 # Handling 404 responses:
-def handler404(request, *args, **argv):
-    response = render_to_response("404.html", {},context_instance=RequestContext(request))
+def handler404(request, exception, template_name="404.html"):
+    response = render_to_response(template_name)
     response.status_code = 404
     return response

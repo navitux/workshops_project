@@ -1,7 +1,9 @@
+import markdown
 from Courses.models import *
 from django.conf import settings
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.utils.safestring import mark_safe
 from django.shortcuts import render, render_to_response, get_list_or_404
 '''
 This file was made for render the index.html page that represents the main page
@@ -11,21 +13,26 @@ purpose of this, Frequent Asked Questions and technical stuffs as requeriments,
 instalation and administration introductions as well.
 '''
 def index(request):
-    all_courses_hosted = Course.objects.all()
-    print(str(all_courses_hosted))
-    if all_courses_hosted != []:
+    # showing only the firsts 50 courses in the instance
+    courses_hosted = Course.objects.all()[:50]
+    if courses_hosted != []:
         context = {
-        'all_courses_hosted':all_courses_hosted
+        'courses_hosted':courses_hosted
         }
         return render(request,'index.html',context)
     else:
-        context = {'all_courses_hosted': 'There are no courses yet in this instace'}
+        context = {'courses_hosted': 'There are no courses yet in this instace'}
         return render(request,'index.html',context)
 
 
 # This is to return the documentation from a markdown file to an html format
 def docs(request):
-    return render(request,'docs.html')
+    raw_md = open(settings.BASE_DIR+'/docs/README.md','r')
+    md = raw_md.read()
+    raw_md.close()
+    html = mark_safe(markdown.markdown(md))
+    context = {'doc_content':html}
+    return render(request,'docs.html',context)
 
 
 # Handling 404 responses:

@@ -10,12 +10,13 @@
 * [Credits](#credits)
 
 
-
+<p id="about"></p>
 ## ABOUT
 
 Workshops is an open source, simple, dead-lightweight LMS (Learning Management System) application programmed in Python (version 3.8.x) with Django (version 2.2.x) web framework which main purpose is to make a standardized way to share knowledge via courses in a slide-based view in browser powered by [remark](https://github.com/gnab/remark) JavaScript library, easy to create, edit, delete and show your courses using simple markdown and HTML if necessary.
 Inspired on an old project in my social labours (and now with the new 'normality' given by the global pandemic in 2020) to help share knowledge in an easy way without using privative and/or complicated software.
 
+<p id="features"></p>
 ## FEATURES
 - It's FOSS software (Free and Open Source) !!
 - Easy to use (for all users registered or not in the instance)
@@ -25,30 +26,35 @@ Inspired on an old project in my social labours (and now with the new 'normality
 - Allow import/export your own courses in a standardized single file (making them independent of the instances) this can be accomplished modifying/exporting the most important file in each course that is the **course**.**md** file and downloading the uploaded resources as well
 - You can download the course a PDF using the builtin function in browser (it will be optimized in future)
 
-
+<p id="dependencies"></p>
 ## DEPENDENCIES
 
 I try to keep only essential and necessary dependencies (trying, of course, not to reinvent the wheel):
-
-```
+<pre>
+<code>
 Django==2.2.16
 django-cleanup==5.1.0
 psycopg2-binary==2.8.6
 python-magic==0.4.22
 pytz==2020.4
 sqlparse==0.4.1
-```
+</code>
+</pre>
+
 And as dependencies in the front-end (CSS and JavaScript libraries) I used:
-```
+
+<pre>
+<code>
 jquery 3.6.0
 jquery-modal 0.9.1
 tippy.js 6
 poppersjs 2
 remarkjs 0.14.0
 tachyons 4.12.0
-```
+</code>
+</pre>
 
-
+<p id="installation"></p>
 ## INSTALLATION
 ## Preinstallation:
 It's important mention that you must know the basics about how Django webapps
@@ -94,11 +100,11 @@ folder, aside the `settings.py` file of the project.
 1. You can setup a virtual environment installing [virtualenv](https://virtualenv.pypa.io/en/latest/)
 and typing the following commands in terminal (assuming that you're using a *nix-like environment):
 
-    `$ virtualenv <folder_name>`
+    `virtualenv <folder_name>`
 
     Then you can activate it:
 
-    `$ source <folder_name>/bin/activate`
+    `source <folder_name>/bin/activate`
 
     (and optionally you can exit from the virtual environment typing: `deactivate`)
 
@@ -106,11 +112,12 @@ and typing the following commands in terminal (assuming that you're using a *nix
 in a zip format and unzip it and go to the main top folder of workshops:
     ```
     (using git)
-    $ git clone https://github.com/navitux/workshops_project.git
-    $ cd workshops_project/
+    git clone https://github.com/navitux/workshops_project.git
+    cd workshops_project/
+
     (unzipping it)
-    $ unzip workshops_project-master.zip
-    $ cd workshops_project-master/
+    unzip workshops_project-master.zip
+    cd workshops_project-master/
     ```
 3. Using pip (inside the virtual environment) install the necessary dependencies
 with pip from requirements.txt:
@@ -123,7 +130,7 @@ with pip from requirements.txt:
     ```
 
 
-
+<p id="basic-usage"></p>
 ## BASIC USAGE
 ### Login and Signup
 Once the application is running on the instance you can login or create a new
@@ -165,7 +172,8 @@ than normal markdown syntax) to arrange content in web slides in browser otherwi
 the course does not will be showed.
 #### How to write a good **course**.**md** file:
 This is a brief example of a well written **course**.**md** file:
-```
+
+<textarea cols="90" rows="32" readonly>
 class: center, middle
 
 # Cool course1
@@ -193,7 +201,7 @@ This slide only shows an embed image file uploaded in the instance
 
 ???
 This slide only shows an embed video file uploaded in the instance
-```
+</textarea>
 
 The syntax is basically as follows according to the wiki of remarkjs library
 ( [remarkjs-markdown](https://github.com/gnab/remark/wiki/Markdown) )we will
@@ -210,29 +218,36 @@ without any space, otherwise the image, video or file will not be showed.
 A line containing three dashes, represents a slide separator (not a horizontal rule, `<hr>`,
 like in regular Markdown). Thus, a simple Markdown text like the one below
 represents a slideshow with two slides:
-```
+<textarea cols="20" rows="10" readonly>
+
 # Slide 1
 This is slide 1
 ---
 # Slide 2
 This is slide 2
-```
+
+</textarea>
 
 #### Incremental Slides
 
 To avoid having to duplicate content if a slide is going to add to the previous
 one, using only two dashes to separate slides will make a slide inherit the
 content of the previous one:
-```
+
+<textarea cols="20" rows="10" readonly>
+
 # Slide
 
 - bullet 1
 --
 
 - bullet 2
-```
+
+</textarea>
+
 The above text expands into the following:
-```
+
+<textarea cols="20" rows="10" readonly>
 # Slide
 
 - bullet 1
@@ -242,25 +257,31 @@ The above text expands into the following:
 
 - bullet 1
 - bullet 2
-```
+</textarea>
 
 #### Slide Notes
 
 A line containing three question marks represents a separator of content and
 note of the slide:
-```
+
+<textarea cols="20" rows="10" readonly>
+
 # Slide
 
 Some content.
 
 ???
 Some note.
-```
+
+</textarea>
+
 A notes open version of a slide show can be shared by sharing the url with #p1
 appended. Such as remarkjs.com/#p1.
 
 With Incremental Slides the notes go after each increment
-```
+
+<textarea cols="20" rows="10" readonly>
+
 Hello
 ???
 notes for hello
@@ -268,7 +289,9 @@ notes for hello
 World
 ???
 notes for world
-```
+
+</textarea>
+
 #### Comments
 
 If you want to leave a comment in your markdown, but not render it in the Slide
@@ -276,15 +299,22 @@ Notes, you can use either of the two following methods. The HTML style comment
 will be available in the page's source in the browser, while the empty link
 will not be.
 HTML
-```
+<textarea cols="20" rows="10" readonly>
+
 <!--
 I'm a comment.
 -->
-```
+
+</textarea>
+
 #### Empty Link
-```
+
+<textarea cols="20" rows="10" readonly>
+<!--
 [//]: # (I'm a comment)
-```
+-->
+</textarea>
+
 #### Slide Properties
 
 Initial lines of a slide on a key-value format will be extracted as slide properties.
@@ -292,11 +322,15 @@ Initial lines of a slide on a key-value format will be extracted as slide proper
 #### name
 
 The name property accepts a name used to identify the current slide:
-```
+
+<textarea cols="20" rows="10" readonly>
+
 name: agenda
 
 # Agenda
-```
+
+</textarea>
+
 A slide name may be used to:
 
     Link to a slide using URL fragment, i.e. slideshow.html#agenda, or in Markdown; [the agenda](#agenda)
@@ -309,11 +343,15 @@ A slide name may be used to:
 
 The background-image property maps directly to the background-image CSS property,
 which are applied to the current slide:
-```
+
+<textarea cols="20" rows="10" readonly>
+
 background-image: url(LOCAL:image.jpg)
 
 # Slide with background image
-```
+
+</textarea>
+
 REMEMBER: We use the keyword `LOCAL:` if the file was uploaded in the current
 course otherwise this will not work.
 
@@ -321,11 +359,15 @@ course otherwise this will not work.
 
 The `count` property allows for specific slides not to be included in the slide
 count, which is by default displayed in the lower right corner of the slideshow:
-```
+
+<textarea cols="20" rows="10" readonly>
+
 count: false
 
 This slide will not be counted.
-```
+
+</textarea>
+
 When the countIncrementalSlides configuration option is enabled, all
 incremental slides will automatically have the `count: false` slide property set.
 
@@ -333,7 +375,8 @@ incremental slides will automatically have the `count: false` slide property set
 
 The `template` property names another slide to be used as a template for the
 current slide:
-```
+
+<textarea cols="20" rows="10" readonly>
 name: other-slide
 
 Some content.
@@ -342,13 +385,18 @@ Some content.
 template: other-slide
 
 Content appended to other-slide's content.
-```
+</textarea>
+
 The final content of the current slide will then be this:
-```
+
+<textarea cols="20" rows="10" readonly>
+
 Some content.
 
 Content appended to other-slide's content.
-```
+
+</textarea>
+
 Both template slide content and properties are prepended to the current slide,
 with the following exceptions:
 
@@ -359,7 +407,9 @@ The `template` property may be used to (apparently) add content to a slide
 incrementally, like bullet lists appearing a bullet at a time.
 
 Using only two dashes (--) to separate slides implicitly uses the preceding slide as a template:
-```
+
+<textarea cols="20" rows="10" readonly>
+
 # Agenda
 
 --
@@ -367,7 +417,9 @@ Using only two dashes (--) to separate slides implicitly uses the preceding slid
 
 --
 2. Markdown formatting
-```
+
+</textarea>
+
 Template slides may also contain a special `{{content}}` expression to
 explicitly position the content of derived slides, instead of having it
 implicitly appended.
@@ -375,7 +427,9 @@ implicitly appended.
 #### layout
 
 The layout property either makes the current slide a layout slide, which is omitted from the slideshow and serves as the default template used for all subsequent slides:
-```
+
+<textarea cols="20" rows="15" readonly>
+
 layout: true
 
 # Section
@@ -387,7 +441,9 @@ layout: true
 ---
 
 ## Sub section 2
-```
+
+</textarea>
+
 Or, when set to false, reverts to using no default template.
 
 Multiple layout slides may be defined throughout the slideshow to define a common template for a series of slides.
@@ -414,7 +470,7 @@ To share the course you can just copy the url of the course since each course
 have an unique identifier accross all instances.
 
 
-
+<p id="license"></p>
 ## LICENSE
 This project uses the open source GNU GPLv3 license.
 
@@ -431,6 +487,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+<p id="credits"></p>
 ## CREDITS
 - Creator: Ivan Robles [navitux](https://github.com/navitux/)
 

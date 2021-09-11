@@ -1,26 +1,20 @@
-/*
-./templates/Courses/update.html javascript front-end mechanics goes here:
-This functions are a support to avoid undesired behaviours on creation or
-modification of course's overview
-*/
+// Courses/update.html
 $(document).ready(function(){
-  $('#id_overview').on("keyup",function(){
-    const old_text = $('#id_overview').val();
-    const new_text = old_text.replaceAll('`', '');
-    document.getElementById("id_overview").value=new_text;
-  });
-});
-$(document).ready(function(){
-  $('#new_overview').on("keyup",function(){
+  $('input[name="new_overview"],textarea').on("keyup",function(){
+    // Here we substitute all backticks symbols ( ` ) for empty spaces ''
     const old_text = $('#new_overview').val();
     const new_text = old_text.replaceAll('`', '');
     document.getElementById("new_overview").value=new_text;
   });
 });
 
-/*
-./templates/SignUpIn/signupin.html javascript front-end mechanics goes here:
-*/
+
+
+
+// *********************************************************************
+
+
+// SignUpIn/signupin.html
 var idies;
 var content;
 function tippies(idies,content){
@@ -41,3 +35,4 @@ tippies('#help-email','This field is not mandatory but it can help to\
                      you');
 tippies('#help-password1','Is recommended that your password have 10 or \
                          more alphanumerical characters');
+

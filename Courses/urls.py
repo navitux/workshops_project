@@ -9,4 +9,5 @@ urlpatterns = [
     path('create/',views.create, name="create"),
     path('update/<uuid:course_id>',views.update, name="update"),
     path('delete/',views.delete,name="delete"),
+	path('zip/',views.get_zipped_files,name="zip"),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -6,8 +6,10 @@
 <br>
 <h1>{{course.name}}</h1>
 <a href="{% url 'course' course.id %}" target="_blank">
-<img src="{% static 'read.svg' %}" width="20px" class="blue-icon" alt="SEE COURSE">
-open course in new tab
+	<button style="color:black;font-weight:bold;display:inline-block;" type="button">
+	<img src="{% static 'read.svg' %}" width="20px" class="blue-icon" alt="SEE COURSE">
+	open course in new tab
+	</button>
 </a>
 <br>
 <br>
@@ -32,24 +34,36 @@ open course in new tab
 <br>
 <!-- Mechanism to edit the overview when the text is modified in textarea -->
 <script type="text/javascript">
-  // Functions to only allow update the course's overview when the orignal text
-  // and it's not empty
-  $(document).ready(function() {
+// Functions to only allow update the course's overview when the orignal text
+// and it's not empty
+// Mechanism to edit the overview when the text is modified in textarea
+$(document).ready(function() {
+  $('input[name="update"]').attr('disabled', true);
+  $('input[name="new_overview"],textarea').on('keyup',function() {
+    // Logic to edit the overview when the text is modified in #new_overview textarea
+    // It allows update the course's overview when it IS different from orignal AND it IS NOT empty
+    // This function cannot be re-located due to a template variable
+    const original = `{{course.overview}}`;
+    const textarea_value = $("#new_overview").val();
+    if(textarea_value != '' && textarea_value != original ) {
+      $('input[name="update"]').attr('disabled', false);
+    } else {
       $('input[name="update"]').attr('disabled', true);
-
-      $('input[name="new_overview"],textarea').on('keyup',function() {
-          const original = `{{course.overview}}`;
-          const textarea_value = $("#new_overview").val();
-          const text_value = $('input[name="new_overview"]').val();
-
-          if(textarea_value != '' && text_value != '' && textarea_value != original) {
-              $('input[name="update"]').attr('disabled', false);
-          } else {
-              $('input[name="update"]').attr('disabled', true);
-          }
-      });
+    }
   });
+});
 </script>
+
+<form action="{% url 'zip' %}" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="id" value="{{course.id}}" />
+	<button style="color:black;font-weight:bold;display:inline-block;" title="DOWNLOAD ALL COURSE FILES AS A ZIP" type="submit">
+		<img src="{% static 'zip.svg' %}" width="20px" class="black-icon" alt="DOWNLOAD ZIP" style="display:inline-block;">
+		Download all course files as a zip
+	</button>
+</form>
+
+
 {% if courses_files %}
 <h3>Files of Course</h3>
 <table>

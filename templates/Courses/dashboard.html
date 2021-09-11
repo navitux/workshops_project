@@ -48,6 +48,15 @@
     <img src="{% static 'read.svg' %}" width="20px" class="blue-icon" alt="SEE COURSE">
   </button>
 </a>
+
+<form action="{% url 'zip' %}" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="id" value="{{c.id}}" />
+	<button style="color:black;font-weight:bold;" type="submit" title="DOWNLOAD IT AS A ZIP">
+		<img src="{% static 'zip.svg' %}" width="20px" class="black-icon" alt="DOWNLOAD ZIP">
+	</button>
+</form>
+
 </td>
 </tr>
 {% endfor %}

@@ -1,7 +1,11 @@
 import os
+import zipfile
 import shutil
+import mimetypes
+from io import BytesIO
 from django.conf import settings
 from .forms import NewCourseForm
+from django.http import HttpResponse
 from .models import Course, CourseFiles
 from django.views.generic.edit import FormView
 from django.contrib.auth.decorators import login_required
@@ -40,8 +44,6 @@ def course(request,course_id):
     'course':course,
     }
     return render(request,'Courses/read.html',context)
-
-
 
 
 
@@ -113,8 +115,6 @@ def update(request,course_id):
         context['courses_files'] = courses_files
         context['success'] = 'The file was deleted successfully'
         return render(request, 'Courses/update.html',context)
-
-
     return render(request, 'Courses/update.html',context)
 
 
@@ -180,9 +180,49 @@ def delete(request):
     directory with all files in the server
     '''
     if request.method == 'POST':
-        pk = request.POST["id"]
+        pk = request.POST['id']
         course_to_delete = get_object_or_404(Course, pk=pk)  # Get your current course
         context = {'course':course_to_delete.name,'id':course_to_delete.id}
         shutil.rmtree(os.path.join(settings.MEDIA_ROOT,str(course_to_delete.id))) # Here occurs the actual deletion of the folder and all files related to the course BEFORE its deletion in database
         course_to_delete.delete() # Here the current course is deleted from database and all files related with django_cleanup app help
     return render(request,'Courses/delete.html',context)
+
+
+
+
+def get_zipped_files(request):
+	'''
+	This view allows download a course as a single zip file
+	the structure is:
+	creator_course.zip
+	|____uuid/ (its container folder)
+	|
+	|_____course.md
+	|_____file.png
+	|_____ ...
+	'''
+	if request.method == 'POST':
+		pk = request.POST['id']
+		course = Course.objects.get(id=pk)
+		files = list(CourseFiles.objects.filter(course_owner=pk))
+		filenames = []
+		for f in files:
+			filenames.append(str(settings.MEDIA_ROOT)+'/'+str(pk)+'/'+str(f.filename()))
+		byte_data = BytesIO()
+		zf = zipfile.ZipFile(byte_data,'w')
+		zip_subdir = str(pk)
+		zip_filename = str(course.name)+'_'+str(course.creator)+'.zip'
+
+		for fpath in filenames:
+			# Calculate path for file in zip
+			fdir, fname = os.path.split(fpath)
+			zip_path = os.path.join(zip_subdir, fname)
+			# Add file, at correct path
+			zf.write(fpath, zip_path)
+		# Must close zip for all contents to be written
+		zf.close()
+	# Grab ZIP file from in-memory, make response with correct MIME-type
+	resp = HttpResponse(byte_data.getvalue(), content_type = "application/x-zip-compressed")
+	# ..and correct content-disposition
+	resp['Content-Disposition'] = 'attachment; filename=%s' % zip_filename
+	return resp

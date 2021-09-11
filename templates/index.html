@@ -58,9 +58,9 @@
 <article class="center ph3 ph5-ns ph0-l mw6">
 <b class="f4">Current List of Courses in this Instance</b>
   <ul align="justify">
-    {% if all_courses_hosted %}
-    {% for course in all_courses_hosted %}
-    <li><a href="{% url 'course' course.id %}">{{course.name}}</a></li>
+    {% if courses_hosted %}
+    {% for course in courses_hosted %}
+    <li><a href="{% url 'course' course.id %}">{{course.creator}}/{{course.name}}</a></li>
     {% endfor %}
     {% else %}
     <li>There's not courses available yet</li>

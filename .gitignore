@@ -1,10 +1,9 @@
-*.txt
 *.swp
 *.backup
 *.pyc
 *.log
 __pycache__/
 *.sqlite3
-media
-migrations
+media/
+migrations/
 local_settings.py

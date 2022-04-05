@@ -1,0 +1,7 @@
+Django==2.2.16
+django-cleanup==5.1.0
+Markdown==3.3.4
+psycopg2-binary==2.8.6
+python-magic==0.4.22
+pytz==2020.4
+sqlparse==0.4.1

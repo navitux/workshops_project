@@ -2,6 +2,8 @@ from django.shortcuts import render,  redirect
 from Courses.models import *
 from django.contrib.auth.models import User
 from django.contrib import auth
+from Courses import views
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 # Function to redirect the user to Login and Sign up page.
 def signupin(request):
@@ -43,3 +45,9 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         return redirect('index')
+
+@login_required(login_url='/signupin/')
+def delete_user_completely(request):
+    ''' This view is to delete completely a user account with all courses related to this account '''
+    
+    pass

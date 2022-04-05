@@ -30,10 +30,11 @@ Inspired on an old project in my social labours (and now with the new 'normality
 ## DEPENDENCIES
 
 I try to keep only essential and necessary dependencies (trying, of course, not to reinvent the wheel):
-<pre>
+<pre style="color:white;background-color:black;">
 <code>
 Django==2.2.16
 django-cleanup==5.1.0
+Markdown==3.3.4
 psycopg2-binary==2.8.6
 python-magic==0.4.22
 pytz==2020.4
@@ -43,7 +44,7 @@ sqlparse==0.4.1
 
 And as dependencies in the front-end (CSS and JavaScript libraries) I used:
 
-<pre>
+<pre style="color:white;background-color:black;">
 <code>
 jquery 3.6.0
 jquery-modal 0.9.1
@@ -65,29 +66,91 @@ tutorial to install Postgresql and create a database:
 
 - On Debian/Ubuntu:
 
-    ```
-    sudo apt install postgresql postgresql-contrib
-    ```
+<pre style="color:white;background-color:black;">
+<code>
+  sudo apt install postgresql postgresql-contrib
+</code>
+</pre>
 
 - On CentOS:
 
-    ```
-    sudo yum install postgresql-server postgresql-contrib
-    ```
+<pre style="color:white;background-color:black;">
+<code>
+  sudo yum install postgresql-server postgresql-contrib
+</code>
+</pre>
 
 - On Arch Linux:
-  ```
+<pre style="color:white;background-color:black;">
+<code>
   sudo pacman -S postgresql
-  ```
+</code>
+</pre>
+
+
+## UPDATE:
+If you are facing issues trying start the Postgresql DB local server getting something a fail when you execute the command <code style="color:white;background-color:black;">sudo systemctl status postgres</code>:
+
+<pre style="color:white;background-color:black;">
+<code>
+× postgresql.service - PostgreSQL database server
+     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; disabled; vendor >
+     Active: failed (Result: exit-code) since Tue 2021-10-19 16:25:27 CDT; 8s ago
+    Process: 32893 ExecStartPre=/usr/bin/postgresql-check-db-dir ${PGROOT}/data (c>
+        CPU: 65ms
+
+Oct 19 16:25:27 manjaro systemd[1]: Starting PostgreSQL database server...
+Oct 19 16:25:27 manjaro postgres[32893]: "/var/lib/postgres/data" is missing or em>
+Oct 19 16:25:27 manjaro postgres[32893]:   su - postgres -c "initdb --locale en_US>
+Oct 19 16:25:27 manjaro postgres[32893]: with relevant options, to initialize the >
+Oct 19 16:25:27 manjaro systemd[1]: postgresql.service: Control process exited, co>
+Oct 19 16:25:27 manjaro systemd[1]: postgresql.service: Failed with result 'exit-c>
+Oct 19 16:25:27 manjaro systemd[1]: Failed to start PostgreSQL database server.
+...
+</code>
+</pre>
+
+in Arch based distribution as Manjaro (this could even help with other Linux
+distos) probably you need execute the following:
+
+<pre style="color:white;background-color:black;">
+<code>
+  sudo mkdir /var/lib/postgres/data/ (if this directory doesn't exist)
+  sudo chown postgres /var/lib/postgres/data
+  sudo -i -u postgres (to use the postgres user)
+  initdb  -D '/var/lib/postgres/data'
+</code>
+</pre>
+
+Then exit postgres user and check again the status of the Database service with
+<code style="color:white;background-color:black;">sudo systemctl status postgres</code> you should get this:
+
+<pre style="color:white;background-color:black;">
+<code>
+● postgresql.service - PostgreSQL database server
+     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; disabled; vendor >
+     Active: active (running) since Tue 2021-10-19 16:28:56 CDT; 16s ago
+    Process: 33037 ExecStartPre=/usr/bin/postgresql-check-db-dir ${PGROOT}/data (c>
+   Main PID: 33039 (postgres)
+      Tasks: 7 (limit: 8922)
+     Memory: 15.6M
+        CPU: 173ms
+</code>
+</pre>
+
+
+To ensure the process is running at start execute: <code style="color:white;background-color:black;">sudo systemctl enable postgresql</code>.
 
 Once installed and configured your username as you prefer, you can access
 your postgres CLI with the sudo user (not recommended for production
-environments): ```sudo -u postgres psql``` , we will proceed
+environments): <code style="color:white;background-color:black;">sudo -u postgres psql</code> , we will proceed
 to create a new database:
 
-  ```
+<pre style="color:white;background-color:black;">
+<code>
   sudo -u postgres createdb workshops
-  ```
+</code>
+</pre>
 
 Alternatively you can add a `local_settings.py` file as part of your own configuration
 for your particular environment and tests (and this is SUPER IMPORTANT in a
@@ -100,17 +163,27 @@ folder, aside the `settings.py` file of the project.
 1. You can setup a virtual environment installing [virtualenv](https://virtualenv.pypa.io/en/latest/)
 and typing the following commands in terminal (assuming that you're using a *nix-like environment):
 
-    `virtualenv <folder_name>`
+<pre style="color:white;background-color:black;">
+<code>
+  virtualenv <i>folder_name</i>
+</code>
+</pre>
 
     Then you can activate it:
 
-    `source <folder_name>/bin/activate`
+<pre style="color:white;background-color:black;">
+<code>
+  source <i>folder_name/bin/activate</i>
+</code>
+</pre>
 
     (and optionally you can exit from the virtual environment typing: `deactivate`)
 
 2. Once made that you can download the project using git or simply downloading it
 in a zip format and unzip it and go to the main top folder of workshops:
-    ```
+
+<pre style="color:white;background-color:black;">
+<code>
     (using git)
     git clone https://github.com/navitux/workshops_project.git
     cd workshops_project/
@@ -118,16 +191,22 @@ in a zip format and unzip it and go to the main top folder of workshops:
     (unzipping it)
     unzip workshops_project-master.zip
     cd workshops_project-master/
-    ```
+</code>
+</pre>
+
 3. Using pip (inside the virtual environment) install the necessary dependencies
 with pip from requirements.txt:
-    ```
-    $ pip install -r requirements.txt
-    ```
+<pre style="color:white;background-color:black;">
+<code>
+    pip install -r requirements.txt
+</code>
+</pre>
 4. We will run the default django's web server typing:
-    ```
+<pre style="color:white;background-color:black;">
+<code>
     $ python manage.py runserver
-    ```
+</code>
+</pre>
 
 
 <p id="basic-usage"></p>

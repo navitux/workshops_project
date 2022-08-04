@@ -525,7 +525,7 @@ have an unique identifier accross all instances.
 
 ## LICENSE
 - **Software License:**
-  - This software is distributed with the Lesser GNU General Public License version 3 (LGPLv3). The full license text file must be distributed with this application.
+  - This software is distributed under MIT license, aiming to a better integration and compatibility with closed and open source software.
 
 <p id="credits"></p>
 

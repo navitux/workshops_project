@@ -7,3 +7,4 @@ __pycache__/
 media/
 migrations/
 local_settings.py
+app/

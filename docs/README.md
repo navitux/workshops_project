@@ -11,12 +11,14 @@
 
 
 <p id="about"></p>
+
 ## ABOUT
 
 Workshops is an open source, simple, dead-lightweight LMS (Learning Management System) application programmed in Python (version 3.8.x) with Django (version 2.2.x) web framework which main purpose is to make a standardized way to share knowledge via courses in a slide-based view in browser powered by [remark](https://github.com/gnab/remark) JavaScript library, easy to create, edit, delete and show your courses using simple markdown and HTML if necessary.
 Inspired on an old project in my social labours (and now with the new 'normality' given by the global pandemic in 2020) to help share knowledge in an easy way without using privative and/or complicated software.
 
 <p id="features"></p>
+
 ## FEATURES
 - It's FOSS software (Free and Open Source) !!
 - Easy to use (for all users registered or not in the instance)
@@ -27,6 +29,7 @@ Inspired on an old project in my social labours (and now with the new 'normality
 - You can download the course a PDF using the builtin function in browser (it will be optimized in future)
 
 <p id="dependencies"></p>
+
 ## DEPENDENCIES
 
 I try to keep only essential and necessary dependencies (trying, of course, not to reinvent the wheel):
@@ -56,107 +59,75 @@ tachyons 4.12.0
 </pre>
 
 <p id="installation"></p>
+
 ## INSTALLATION
-## Preinstallation:
+### Preinstallation:
 It's important mention that you must know the basics about how Django webapps
 works and how to setup a real configuration for a production instance.
 
 You must create a Postgresql database. Here is a brief
 tutorial to install Postgresql and create a database:
 
-- On Debian/Ubuntu:
+- **Installation of [PostgreSQL](https://www.postgresql.org/) in the most used Linux distros <p style="font-size:smaller;">(NOTE: distros with asterisk * have been not tested yet but the installation of postgresql should work and therefor Workshops app)</p>**
+  - **Ubuntu / Debian<sup>*</sup>:**
+  <pre style="color:white;background-color:black;">
+  <code>
+  sudo apt install postgresql postgresql-contrib -y
+  </code>
+  </pre>
 
-<pre style="color:white;background-color:black;">
-<code>
-  sudo apt install postgresql postgresql-contrib
-</code>
-</pre>
+  - **Fedora / CentOS<sup>*</sup>:**
+  <pre style="color:white;background-color:black;">
+  <code>
+  sudo dnf install postgresql-server postgresql-contrib -y
+  </code>
+  </pre>
 
-- On CentOS:
-
-<pre style="color:white;background-color:black;">
-<code>
-  sudo yum install postgresql-server postgresql-contrib
-</code>
-</pre>
-
-- On Arch Linux:
-<pre style="color:white;background-color:black;">
-<code>
-  sudo pacman -S postgresql
-</code>
-</pre>
-
-
-## UPDATE:
-If you are facing issues trying start the Postgresql DB local server getting something a fail when you execute the command <code style="color:white;background-color:black;">sudo systemctl status postgres</code>:
-
-<pre style="color:white;background-color:black;">
-<code>
-× postgresql.service - PostgreSQL database server
-     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; disabled; vendor >
-     Active: failed (Result: exit-code) since Tue 2021-10-19 16:25:27 CDT; 8s ago
-    Process: 32893 ExecStartPre=/usr/bin/postgresql-check-db-dir ${PGROOT}/data (c>
-        CPU: 65ms
-
-Oct 19 16:25:27 manjaro systemd[1]: Starting PostgreSQL database server...
-Oct 19 16:25:27 manjaro postgres[32893]: "/var/lib/postgres/data" is missing or em>
-Oct 19 16:25:27 manjaro postgres[32893]:   su - postgres -c "initdb --locale en_US>
-Oct 19 16:25:27 manjaro postgres[32893]: with relevant options, to initialize the >
-Oct 19 16:25:27 manjaro systemd[1]: postgresql.service: Control process exited, co>
-Oct 19 16:25:27 manjaro systemd[1]: postgresql.service: Failed with result 'exit-c>
-Oct 19 16:25:27 manjaro systemd[1]: Failed to start PostgreSQL database server.
-...
-</code>
-</pre>
-
-in Arch based distribution as Manjaro (this could even help with other Linux
+  - **Arch Linux / Manjaro<sup>*</sup>:**
+  <pre style="color:white;background-color:black;">
+  <code>
+  sudo pacman -S postgresql -y
+  </code>
+  </pre>
+  
+  in Arch based distributions as Manjaro (this could even help with other Linux
 distos) probably you need execute the following:
 
-<pre style="color:white;background-color:black;">
-<code>
+	<pre style="color:white;background-color:black;">
+  <code>
   sudo mkdir /var/lib/postgres/data/ (if this directory doesn't exist)
   sudo chown postgres /var/lib/postgres/data
   sudo -i -u postgres (to use the postgres user)
   initdb  -D '/var/lib/postgres/data'
-</code>
-</pre>
+  </code>
+  </pre>
 
-Then exit postgres user and check again the status of the Database service with
-<code style="color:white;background-color:black;">sudo systemctl status postgres</code> you should get this:
-
-<pre style="color:white;background-color:black;">
-<code>
-● postgresql.service - PostgreSQL database server
-     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; disabled; vendor >
-     Active: active (running) since Tue 2021-10-19 16:28:56 CDT; 16s ago
+  Then exit postgres user and to check that database daemon is up and running we can its status with the following command:
+  <code style="color:white;background-color:black;">sudo systemctl status postgres</code> 
+you should get this output in terminal:
+  <pre style="color:white;background-color:black;"><code>● postgresql.service - PostgreSQL database server
+    Loaded: loaded (/usr/lib/systemd/system/postgresql.service; disabled; vendor >
+    Active: active (running) since Tue 2021-10-19 16:28:56 CDT; 16s ago
     Process: 33037 ExecStartPre=/usr/bin/postgresql-check-db-dir ${PGROOT}/data (c>
    Main PID: 33039 (postgres)
       Tasks: 7 (limit: 8922)
      Memory: 15.6M
         CPU: 173ms
-</code>
-</pre>
+  </code>
+  </pre>
 
 
-To ensure the process is running at start execute: <code style="color:white;background-color:black;">sudo systemctl enable postgresql</code>.
+  To ensure the process is running at Operative System boot execute: <code style="color:white;background-color:black;">sudo systemctl enable postgresql</code>.
 
-Once installed and configured your username as you prefer, you can access
-your postgres CLI with the sudo user (not recommended for production
-environments): <code style="color:white;background-color:black;">sudo -u postgres psql</code> , we will proceed
-to create a new database:
+  Once installed and configured your username as you prefer, you can access your postgres CLI with the sudo user (not recommended for production environments): <code style="color:white;background-color:black;">sudo -u postgres psql</code> , we will proceed to create a new database:
 
-<pre style="color:white;background-color:black;">
-<code>
+  <pre style="color:white;background-color:black;">
+  <code>
   sudo -u postgres createdb workshops
-</code>
-</pre>
+  </code>
+  </pre>
 
-Alternatively you can add a `local_settings.py` file as part of your own configuration
-for your particular environment and tests (and this is SUPER IMPORTANT in a
-production environment to keep secure your database's credentials, your SECRET_KEY
-and DEBUG global variables for example) it must be located on the workshops/
-folder, aside the `settings.py` file of the project.
+  Alternatively you can add a `local_settings.py` file as part of your own configuration for your particular environment and tests (and this is SUPER IMPORTANT in a production environment to keep secure your database's credentials, your SECRET_KEY and DEBUG global variables for example) it must be located on the workshops/ folder, aside the `settings.py` file of the project.
 
 
 ## Quick installation for development/test environment
@@ -210,6 +181,7 @@ with pip from requirements.txt:
 
 
 <p id="basic-usage"></p>
+
 ## BASIC USAGE
 ### Login and Signup
 Once the application is running on the instance you can login or create a new
@@ -550,26 +522,18 @@ have an unique identifier accross all instances.
 
 
 <p id="license"></p>
+
 ## LICENSE
-This project uses the open source GNU GPLv3 license.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- **Software License:**
+  - This software is distributed with the Lesser GNU General Public License version 3 (LGPLv3). The full license text file must be distributed with this application.
 
 <p id="credits"></p>
-## CREDITS
-- Creator: Ivan Robles [navitux](https://github.com/navitux/)
 
-- Course's presentation RemarkJS: [remark](https://github.com/gnab/remark)
-
-- Graphical resources: <https://www.svgrepo.com/>
+## CREDITS AND MENTIONS
+The contributors and special mentions are listed here and in the Github project's page <https://github.com/navitux/workshops_project> :
+- **Contributors (listed per github user name)**
+  - [navitux](https://github.com/navitux/) (author)
+  - [EmaSmach](https://github.com/EmaSMach)
+- **Special Mentions**
+  - Javascript Slide library's presentation RemarkJS: [remark](https://github.com/gnab/remark)
+  - Graphical resources: <https://www.svgrepo.com/>

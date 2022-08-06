@@ -4,7 +4,7 @@
 *.log
 __pycache__/
 *.sqlite3
-media/
+media/*
 migrations/
 local_settings.py
 app/

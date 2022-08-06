@@ -3,6 +3,7 @@
 # the following files and folders will be packaged inside the software
 #
 #app/
+#── CHANGELOG.md
 #├── Courses/
 #   ├── admin.py
 #   ├── apps.py
@@ -15,12 +16,10 @@
 #   ├── tests.py
 #   ├── urls.py
 #   └── views.py
-#── docs/
-#   ├── CHANGELOG.md
-#   ├── LICENSE
-#   └── README.md
+#── LICENSE
 #── manage.py
 #── media/
+#── README.md
 #── requirements.txt
 #── SignUpIn/
 #   ├── admin.py
@@ -50,7 +49,22 @@
 #   │   ├── creating.png
 #   │   ├── dashboard-button.png
 #   │   ├── dashboard.png
+#   |   ├── example10.png
+#   │   ├── example11.png
+#   │   ├── example12.png
+#   │   ├── example13.png
+#   │   ├── example14.png
+#   │   ├── example15.png
 #   │   ├── example1-course.png
+#   |   ├── example1.png
+#   │   ├── example2.png
+#   │   ├── example3.png
+#   │   ├── example4.png
+#   │   ├── example5.png
+#   │   ├── example6.png
+#   │   ├── example7.png
+#   │   ├── example8.png
+#   │   ├── example9.png
 #   │   ├── list-all-courses.png
 #   │   ├── logging.png
 #   │   ├── login-url.png
@@ -73,6 +87,7 @@
 #   ├── index.html
 #   └── SignUpIn/
 #       └── signupin.html
+#── versions
 #── workshops/
 #   ├── __init__.py
 #   ├── settings.py
@@ -110,7 +125,12 @@ cp Courses/*.py ${FOLDER}Courses ;
 mkdir ${FOLDER}Courses/templatetags/ ;
 cp Courses/templatetags/*.py ${FOLDER}Courses/templatetags/ ;
 
-cp docs/ $FOLDER ;
+cp CHANGELOG.md $FOLDER ;
+
+cp LICENSE $FOLDER ;
+
+cp README.md $FOLDER ;
+
 cp manage.py $FOLDER ;
 
 mkdir ${FOLDER}media/ ;

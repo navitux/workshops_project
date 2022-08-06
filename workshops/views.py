@@ -27,7 +27,7 @@ def index(request):
 
 # This is to return the documentation from a markdown file to an html format
 def docs(request):
-    raw_md = open(settings.BASE_DIR+'/docs/README.md','r')
+    raw_md = open(settings.BASE_DIR+'README.md','r')
     md = raw_md.read()
     raw_md.close()
     html = mark_safe(markdown.markdown(md))

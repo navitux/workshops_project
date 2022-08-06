@@ -187,30 +187,30 @@ with pip from requirements.txt:
 Once the application is running on the instance you can login or create a new
 account clicking directly in the "Login/Signup" button at the first page loaded:
 
-<img src="../static/res/logging.png" style="width:800px; height:400px;" alt="logging/signup button">
+<img src="static/res/logging.png" style="width:800px; height:400px;" alt="logging/signup button">
 
 and you must be redirected to a your-server-name + /signupin/ url
 (I'm using the default test environment configuration in the example):
 
-<img src="../static/res/login-url.png" alt=" http://127.0.0.1:8000/signupin/ ">
+<img src="static/res/login-url.png" alt=" http://127.0.0.1:8000/signupin/ ">
 
 And this is the login and 1st signup page:
 
-<img src="../static/res/signup.png" style="width:800px; height:400px;" alt="logging/signup page">
+<img src="static/res/signup.png" style="width:800px; height:400px;" alt="logging/signup page">
 
 ### Creating your courses:
 Once you have logged in you will see your username and other links in the
 navigation bar as follows, you can just click on the "+ New Course" button
 to begin making a course:
 
-<img src="../static/res/creating.png" style="width:800px; height:400px;" alt="creating a course">
+<img src="static/res/creating.png" style="width:800px; height:400px;" alt="creating a course">
 
 One clicked, you will be redirected to your-server-name + /create/ url:
 
-<img src="../static/res/create-url.png" alt=" http://127.0.0.1:8000/create/ ">
+<img src="static/res/create-url.png" alt=" http://127.0.0.1:8000/create/ ">
 <br>
 <br>
-<img src="../static/res/creating-1.png" style="width:800px; height:400px;" alt="Creating a Course">
+<img src="static/res/creating-1.png" style="width:800px; height:400px;" alt="Creating a Course">
 
 You can upload images,videos, and the main and most important file: '**course**.**md**' file
 
@@ -221,38 +221,10 @@ a plain text file formatted with markdown syntax following the rules of the
 [remark](https://github.com/gnab/remark) JavaScript library (that does not vary so much
 than normal markdown syntax) to arrange content in web slides in browser otherwise
 the course does not will be showed.
-#### How to write a good **course**.**md** file:
-This is a brief example of a well written **course**.**md** file:
+#### How to write a good **course**.**md** file: (the plain text examples are here as image because of issues with the markdown interpreters )
+This is a brief example of a well written <b>course.md</b> file:
 
-<textarea cols="90" rows="32" readonly>
-class: center, middle
-
-# Cool course1
-
----
-
-# Agenda
-
-1. Blah
-2. Blah blah
-3. Blah blah blah
-
----
-
-# Introduction
-
-![logo image](LOCAL:logo.png)
-
-???
-This slide only shows an embed image file uploaded in the instance
----
-
-<iframe width="560" height="315" src="LOCAL:funny_video.mp4" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
-
-
-???
-This slide only shows an embed video file uploaded in the instance
-</textarea>
+![example 1 - a good course ](static/res/example1.png)
 
 The syntax is basically as follows according to the wiki of remarkjs library
 ( [remarkjs-markdown](https://github.com/gnab/remark/wiki/Markdown) )we will
@@ -269,15 +241,8 @@ without any space, otherwise the image, video or file will not be showed.
 A line containing three dashes, represents a slide separator (not a horizontal rule, `<hr>`,
 like in regular Markdown). Thus, a simple Markdown text like the one below
 represents a slideshow with two slides:
-<textarea cols="20" rows="10" readonly>
 
-# Slide 1
-This is slide 1
----
-# Slide 2
-This is slide 2
-
-</textarea>
+![example 2 - slide separators ](static/res/example2.png)
 
 #### Incremental Slides
 
@@ -285,86 +250,38 @@ To avoid having to duplicate content if a slide is going to add to the previous
 one, using only two dashes to separate slides will make a slide inherit the
 content of the previous one:
 
-<textarea cols="20" rows="10" readonly>
-
-# Slide
-
-- bullet 1
---
-
-- bullet 2
-
-</textarea>
+![example 3 - incremental slides ](static/res/example3.png)
 
 The above text expands into the following:
 
-<textarea cols="20" rows="10" readonly>
-# Slide
-
-- bullet 1
----
-
-# Slide
-
-- bullet 1
-- bullet 2
-</textarea>
+![example 4 - other incremental slides ](static/res/example4.png)
 
 #### Slide Notes
 
 A line containing three question marks represents a separator of content and
 note of the slide:
 
-<textarea cols="20" rows="10" readonly>
-
-# Slide
-
-Some content.
-
-???
-Some note.
-
-</textarea>
+![example 5 - slide note ](static/res/example5.png)
 
 A notes open version of a slide show can be shared by sharing the url with #p1
 appended. Such as remarkjs.com/#p1.
 
 With Incremental Slides the notes go after each increment
 
-<textarea cols="20" rows="10" readonly>
-
-Hello
-???
-notes for hello
---
-World
-???
-notes for world
-
-</textarea>
+![example 6 - other slide note ](static/res/example6.png)
 
 #### Comments
 
 If you want to leave a comment in your markdown, but not render it in the Slide
 Notes, you can use either of the two following methods. The HTML style comment
 will be available in the page's source in the browser, while the empty link
-will not be.
-HTML
-<textarea cols="20" rows="10" readonly>
+will not be HTML.
 
-<!--
-I'm a comment.
--->
+![example 7 - a comment ](static/res/example7.png)
 
-</textarea>
+#### Empty Link As Comment
 
-#### Empty Link
-
-<textarea cols="20" rows="10" readonly>
-<!--
-[//]: # (I'm a comment)
--->
-</textarea>
+![example 8 - empty link as comment ](static/res/example8.png)
 
 #### Slide Properties
 
@@ -374,34 +291,22 @@ Initial lines of a slide on a key-value format will be extracted as slide proper
 
 The name property accepts a name used to identify the current slide:
 
-<textarea cols="20" rows="10" readonly>
-
-name: agenda
-
-# Agenda
-
-</textarea>
+![example 9 - name of slide ](static/res/example9.png)
 
 A slide name may be used to:
 
-    Link to a slide using URL fragment, i.e. slideshow.html#agenda, or in Markdown; [the agenda](#agenda)
+  - Link to a slide using URL fragment, i.e. slideshow.html#agenda, or in Markdown; [the agenda](#agenda)
 
-    Navigate to a slide using the API, i.e. slideshow.gotoSlide('agenda')
+  - Navigate to a slide using the API, i.e. slideshow.gotoSlide('agenda')
 
-    Identify slide DOM element, either for scripting or styling purposes
+  - Identify slide DOM element, either for scripting or styling purposes
 
 #### background-image
 
 The background-image property maps directly to the background-image CSS property,
 which are applied to the current slide:
 
-<textarea cols="20" rows="10" readonly>
-
-background-image: url(LOCAL:image.jpg)
-
-# Slide with background image
-
-</textarea>
+![example 10 - background image ](static/res/example10.png)
 
 REMEMBER: We use the keyword `LOCAL:` if the file was uploaded in the current
 course otherwise this will not work.
@@ -411,13 +316,7 @@ course otherwise this will not work.
 The `count` property allows for specific slides not to be included in the slide
 count, which is by default displayed in the lower right corner of the slideshow:
 
-<textarea cols="20" rows="10" readonly>
-
-count: false
-
-This slide will not be counted.
-
-</textarea>
+![example 11 - counter ](static/res/example11.png)
 
 When the countIncrementalSlides configuration option is enabled, all
 incremental slides will automatically have the `count: false` slide property set.
@@ -427,49 +326,24 @@ incremental slides will automatically have the `count: false` slide property set
 The `template` property names another slide to be used as a template for the
 current slide:
 
-<textarea cols="20" rows="10" readonly>
-name: other-slide
-
-Some content.
-
----
-template: other-slide
-
-Content appended to other-slide's content.
-</textarea>
+![example 12 - template ](static/res/example12.png)
 
 The final content of the current slide will then be this:
 
-<textarea cols="20" rows="10" readonly>
-
-Some content.
-
-Content appended to other-slide's content.
-
-</textarea>
+![example 13 - result of template ](static/res/example13.png)
 
 Both template slide content and properties are prepended to the current slide,
 with the following exceptions:
 
-    `name` and `layout` properties are not inherited
-    `class` properties are merged, preserving class order
+  - `name` and `layout` properties are not inherited
+  - `class` properties are merged, preserving class order
 
 The `template` property may be used to (apparently) add content to a slide
 incrementally, like bullet lists appearing a bullet at a time.
 
 Using only two dashes (--) to separate slides implicitly uses the preceding slide as a template:
 
-<textarea cols="20" rows="10" readonly>
-
-# Agenda
-
---
-1. Introduction
-
---
-2. Markdown formatting
-
-</textarea>
+![example 14 - two dashed slides act as templates of next ones ](static/res/example14.png)
 
 Template slides may also contain a special `{{content}}` expression to
 explicitly position the content of derived slides, instead of having it
@@ -479,21 +353,7 @@ implicitly appended.
 
 The layout property either makes the current slide a layout slide, which is omitted from the slideshow and serves as the default template used for all subsequent slides:
 
-<textarea cols="20" rows="15" readonly>
-
-layout: true
-
-# Section
-
----
-
-## Sub section 1
-
----
-
-## Sub section 2
-
-</textarea>
+![example 15 - slide layout ](static/res/example15.png)
 
 Or, when set to false, reverts to using no default template.
 
@@ -502,20 +362,20 @@ Multiple layout slides may be defined throughout the slideshow to define a commo
 ### Seeing courses:
 You can see all courses hosted in the current instance on the main page:
 
-<img src="../static/res/list-all-courses.png" style="width:800px; height:400px;" alt="all courses">
+<img src="static/res/list-all-courses.png" style="width:800px; height:400px;" alt="all courses">
 
 ### Seeing your own courses:
 You can click on "Dashboard" button in the navbar:
 
-<img src="../static/res/dashboard-button.png" style="width:1000px; height:400px;" alt="dashboard button">
+<img src="static/res/dashboard-button.png" style="width:800px; height:400px;" alt="dashboard button">
 
 then you will see here all courses made for you:
 
-<img src="../static/res/dashboard.png" style="width:800px; height:400px;" alt="dashboard">
+<img src="static/res/dashboard.png" style="width:800px; height:400px;" alt="dashboard">
 
 and finally pressing on the "view button" you can open your course as bellow:
 
-<img src="../static/res/example1-course.png" style="width:800px; height:400px;" alt="example course">
+<img src="static/res/example1-course.png" style="width:800px; height:400px;" alt="example course">
 
 To share the course you can just copy the url of the course since each course
 have an unique identifier accross all instances.

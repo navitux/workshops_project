@@ -10,28 +10,22 @@
 * [Credits](#credits)
 
 
-<p id="about"></p>
-
-## ABOUT
-
+<h2 id="about">ABOUT</h2>
 Workshops is an open source, simple, dead-lightweight LMS (Learning Management System) application programmed in Python (version 3.8.x) with Django (version 2.2.x) web framework which main purpose is to make a standardized way to share knowledge via courses in a slide-based view in browser powered by [remark](https://github.com/gnab/remark) JavaScript library, easy to create, edit, delete and show your courses using simple markdown and HTML if necessary.
 Inspired on an old project in my social labours (and now with the new 'normality' given by the global pandemic in 2020) to help share knowledge in an easy way without using privative and/or complicated software.
 
-<p id="features"></p>
 
-## FEATURES
+<h2 id="features">FEATURES</h2>
 - It's FOSS software (Free and Open Source) !!
 - Easy to use (for all users registered or not in the instance)
 - Intuitive interface with quick help and advices
 - Easy Installation (for production or test environment)
 - Perform creation/reading/updating/deleting (CRUD) operations on courses
-- Allow import/export your own courses in a standardized single file (making them independent of the instances) this can be accomplished modifying/exporting the most important file in each course that is the **course**.**md** file and downloading the uploaded resources as well
+- Allow import/export your own courses in a standardized single file (making them independent of the instances) this can be accomplished modifying/exporting the most important file in each course that is the <code>course.md</code> file and downloading the uploaded resources as well
 - You can download the course a PDF using the builtin function in browser (it will be optimized in future)
 
-<p id="dependencies"></p>
 
-## DEPENDENCIES
-
+<h2 id="dependencies">DEPENDENCIES</h2>
 I try to keep only essential and necessary dependencies (trying, of course, not to reinvent the wheel):
 <pre style="color:white;background-color:black;">
 <code>
@@ -58,9 +52,9 @@ tachyons 4.12.0
 </code>
 </pre>
 
-<p id="installation"></p>
 
-## INSTALLATION
+<h2 id="installation">INSTALLATION</h2>
+
 ### Preinstallation:
 It's important mention that you must know the basics about how Django webapps
 works and how to setup a real configuration for a production instance.
@@ -180,9 +174,8 @@ with pip from requirements.txt:
 </pre>
 
 
-<p id="basic-usage"></p>
+<h2 id="basic-usage">BASIC USAGE</h2>
 
-## BASIC USAGE
 ### Login and Signup
 Once the application is running on the instance you can login or create a new
 account clicking directly in the "Login/Signup" button at the first page loaded:
@@ -381,16 +374,15 @@ To share the course you can just copy the url of the course since each course
 have an unique identifier accross all instances.
 
 
-<p id="license"></p>
+<h2 id="license">LICENSE</h2>
 
-## LICENSE
 - **Software License:**
   - This software is distributed under MIT license, aiming to a better integration and compatibility with closed and open source software.
 
-<p id="credits"></p>
 
-## CREDITS AND MENTIONS
+<h2 id="credits">CREDITS AND MENTIONS</h2>
 The contributors and special mentions are listed here and in the Github project's page <https://github.com/navitux/workshops_project> :
+
 - **Contributors (listed per github user name)**
   - [navitux](https://github.com/navitux/) (author)
   - [EmaSmach](https://github.com/EmaSMach)
